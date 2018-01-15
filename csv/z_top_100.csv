@@ -1,0 +1,101 @@
+Track Name,Primary Artist,Album,energy,liveness,tempo,speechiness,acousticness,instrumentalness,time_signature,danceability,key,duration_ms,loudness,valence,id,mode
+Believe,Mumford & Sons,Wilder Mind,0.668,0.219,113.996,0.0431,0.035,0.0212,4,0.362,2,220867,-5.975,0.344,4A57CXs3jAmyNTMAwWaV53,1
+I Like How It Feels,Enrique Iglesias,I Like How It Feels,0.858,0.163,127.997,0.103,0.0111,0,4,0.593,9,219664,-3.749,0.734,3sLBdi6Wa1qHLANpVOGiZO,1
+Sherry,Frankie Valli & The Four Seasons,The Very Best Of Frankie Valli & The 4 Seasons (US Release),0.478,0.113,117.562,0.0441,0.626,0,4,0.703,7,152160,-8.062,0.734,0NpvdCO506uO58D4AbKzki,1
+Take It All Back 2.0,Judah & the Lion,Folk Hop N' Roll (Deluxe),0.801,0.13,148.071,0.0305,0.00925,8.84e-05,4,0.446,0,218356,-6.397,0.765,2w7O4XCRoIJrwF1NqKL9TM,1
+In Too Deep,Sum 41,"All Killer, No Filler",0.838,0.0588,116.048,0.0586,0.000178,1.07e-06,4,0.577,9,207093,-5.793,0.802,1HNE2PX70ztbEl6MLxrpNL,1
+In My Life - Remastered,The Beatles,Rubber Soul (Remastered),0.435,0.113,103.239,0.0323,0.449,0,4,0.688,9,146333,-11.359,0.435,3KfbEIOC7YIv90FIfNSZpo,1
+Everybody Talks,Neon Trees,Picture Show (Deluxe Edition),0.915,0.386,154.955,0.0652,0.00584,0,4,0.478,8,177280,-3.858,0.703,3528IXKpbb7OMjdjWYlbfD,1
+Perfect,One Direction,Made In The A.M. (Deluxe Edition),0.823,0.119,99.933,0.0762,0.0598,0,4,0.647,2,230333,-5.231,0.396,3NLnwwAQbbFKcEcV8hDItk,1
+Pretty Girl - Cheat Codes X CADE Remix,Maggie Lindemann,Pretty Girl (Cheat Codes X CADE Remix),0.868,0.104,121.03,0.0291,0.15,0.132,4,0.703,7,193613,-4.661,0.733,39IsH7B5byx8NRlEKlZVg9,0
+Love Somebody,Maroon 5,Overexposed (Deluxe),0.764,0.117,120.009,0.0373,0.142,0,4,0.675,1,229813,-6.243,0.474,0HnaqUxvHP5LaWdmWwJpiS,1
+Love Myself,Hailee Steinfeld,HAIZ,0.762,0.435,122.91,0.0811,0.00296,0,4,0.617,0,218773,-6.737,0.286,36phXHOKx8rO7CMp2vNX4x,0
+Give Me Everything,Pitbull,Planet Pit (Deluxe Version),0.939,0.298,129.023,0.161,0.192,0,4,0.671,8,252307,-3.206,0.529,4QNpBfC0zvjKqPJcyqBy9W,1
+Riptide,Vance Joy,Dream Your Life Away (Special Edition),0.731,0.151,101.654,0.0379,0.431,0,4,0.484,1,204280,-6.694,0.51,3JvrhDOgAt6p7K8mDyZwRd,1
+She Sets The City On Fire,Gavin DeGraw,She Sets The City On Fire,0.615,0.0897,125.898,0.0567,0.0139,0,4,0.617,4,218631,-6.518,0.564,1LWEjUzrngRXdUBaf7GWYI,1
+Unwritten,Natasha Bedingfield,Unwritten,0.801,0.0822,100.013,0.0399,0.00577,0,4,0.706,5,259333,-6.333,0.63,1D1nixOVWOxvNfWi0UD7VX,1
+Eenie Meenie,Justin Bieber,My World 2.0,0.618,0.0978,121.225,0.0325,0.0654,0,4,0.717,1,202627,-4.238,0.786,75vEuMA15pb8JmgrGugHEs,1
+Upside Down,A*Teens,Teen Spirit,0.9,0.296,122.047,0.035,0.132,0.00378,4,0.705,9,195200,-3.432,0.907,3vVrMfMn9FYsFn9ueM5dbB,1
+Paris,The Chainsmokers,Paris,0.644,0.0888,99.999,0.031,0.0243,0,4,0.646,2,221520,-6.763,0.251,15vzANxN8G9wWfwAJLLMCg,1
+The One That Got Away,Katy Perry,Katy Perry - Teenage Dream: The Complete Confection,0.792,0.2,133.962,0.0353,0.000802,0,4,0.687,1,227333,-4.023,0.864,3oL3XRtkP1WVbMxf7dtTdu,0
+What I Like About You,The Romantics,What I Like About You (And Other Romantic Hits),0.915,0.171,159.81,0.0549,0.319,5.34e-05,4,0.542,9,175400,-9.637,0.92,6NdcSEhpGGAYXNnnhGS2s6,1
+Cheap Thrills,Sia,This Is Acting (Deluxe Version),0.788,0.125,89.949,0.201,0.0599,2.54e-06,4,0.592,6,224493,-4.924,0.755,2ONIJ40u0Attbm3miIIpNO,0
+The Sweet Escape,Gwen Stefani,The Sweet Escape,0.786,0.158,119.962,0.0348,0.201,0,4,0.756,1,246467,-3.453,0.736,1q9siR3OqGFnTeqFxwzN1S,1
+I Will Wait,Mumford & Sons,Babel,0.752,0.301,131.221,0.0323,0.0165,0.00541,4,0.488,1,276720,-5.131,0.445,2JHBMVs8E7bJJBLkXpKgHn,1
+Ego,Beyoncé,I AM...SASHA FIERCE,0.389,0.163,79.454,0.241,0.155,0,4,0.623,1,236360,-7.816,0.489,6GcuA4J9ruyClBizBd4m5E,1
+Changing Of The Seasons,Two Door Cinema Club,Changing Of The Seasons,0.882,0.103,129.972,0.155,4.72e-05,0.000351,4,0.537,2,227107,-4.429,0.545,6gLQrU5bvwPf6BTlCSO6x2,1
+Green Light,Lorde,Melodrama,0.734,0.0873,128.876,0.101,0.0149,1.23e-05,4,0.599,9,234653,-7.77,0.241,6ie2Bw3xLj2JcGowOlcMhb,1
+Here Comes The Sun - Remastered,The Beatles,Abbey Road (Remastered),0.54,0.179,129.171,0.0347,0.0339,0.00248,4,0.557,9,185733,-10.484,0.394,6dGnYIeXmHdcikdzNNDMm2,1
+I Want You,Marian Hill,ACT ONE,0.35,0.224,87.012,0.533,0.431,3.37e-05,4,0.613,5,212493,-9.421,0.369,2AVHUAhi4y7USruiDOhmNb,0
+Big Yellow Taxi,Joni Mitchell,Ladies Of The Canyon,0.47,0.581,85.527,0.0356,0.579,0,4,0.611,4,134800,-9.135,0.97,6UkMcAA19lTdjs22jtB7o2,1
+Castle on the Hill,Ed Sheeran,Castle on the Hill,0.834,0.14,135.007,0.0989,0.0232,1.14e-05,4,0.461,2,261154,-4.868,0.471,66qlqxhEMpSHOzjRK4il0b,1
+Somebody That I Used To Know,Gotye,Making Mirrors,0.517,0.102,129.063,0.0384,0.565,0.000195,4,0.857,0,244973,-6.972,0.754,4wCmqSrbyCgxEXROQE6vtV,1
+It Ain’t Me (with Selena Gomez),Kygo,It Ain't Me,0.532,0.0831,99.983,0.0746,0.0905,0,4,0.648,0,220781,-6.597,0.487,12GEpg2XOPyqk03JZEZnJs,1
+Weak,AJR,What Everyone's Thinking,0.642,0.137,123.984,0.0461,0.127,0,4,0.672,5,202194,-4.552,0.656,45iMRHmfLZu3yjdZ8P5e3t,1
+Uptown Girl,Billy Joel,The Essential Billy Joel,0.943,0.653,129.003,0.0431,0.0736,0,4,0.696,4,194867,-2.962,0.833,3CSpzkoL1XgDBZ1q9aDCUV,1
+Love On Me,Galantis,Love On Me,0.906,0.145,124.146,0.0758,0.105,0,4,0.562,4,205920,-2.085,0.674,2MHCiOohBZEQuLgDTPvSzF,1
+A Thousand Miles,Vanessa Carlton,Be Not Nobody,0.825,0.161,94.931,0.0379,0.323,0,4,0.56,11,237493,-3.862,0.268,4w1lzcaoZ1IC2K5TwjalRP,1
+Hallelujah,Rufus Wainwright,Vibrate: The Best Of (Deluxe Edition),0.16,0.0979,73.11,0.037,0.88,0,4,0.271,9,251587,-10.038,0.402,2u6fRGcaBhpI4uNBHpGv0b,0
+Countdown,Beyoncé,4,0.787,0.219,167.349,0.151,0.308,0,4,0.665,5,212147,-5.73,0.699,3axkNosdVQLZiq1HakuGhc,1
+Big Girls Don't Cry (Personal),Fergie,The Dutchess,0.647,0.0955,113.116,0.0336,0.239,0,4,0.712,7,268120,-4.277,0.292,3Q4WeJmzxuDpzMu9QjQqbM,1
+Lost in My Mind,The Head and the Heart,The Head and the Heart,0.546,0.278,95.361,0.0294,0.451,0.000312,4,0.375,2,259120,-8.16,0.37,3gvAGvbMCRvVDDp8ZaIPV5,1
+Call Me Maybe,Carly Rae Jepsen,Call Me Maybe,0.599,0.109,120.053,0.0436,0.0109,1.12e-06,4,0.781,7,193467,-6.501,0.608,6ol4ZSifr7r3Lb2a9L5ZAB,1
+Angela,The Lumineers,Cleopatra,0.563,0.11,130.366,0.0305,0.649,0.000347,4,0.668,4,201786,-8.23,0.289,5bodDpPolC3xlame0SVcDY,1
+Finally Found You,Enrique Iglesias,Finally Found You,0.872,0.344,127.952,0.0935,0.0101,0,4,0.622,6,220933,-4.734,0.633,35nI1AQT4er6Z2BQlyNd6j,0
+America's Sweetheart,Elle King,Love Stuff,0.928,0.376,128.009,0.0664,0.0208,5.69e-06,4,0.528,1,245547,-3.925,0.399,2NcstvY8H9PVQ0DMNGHckh,1
+Say Something,A Great Big World,Is There Anybody Out There?,0.147,0.0913,141.284,0.0355,0.857,2.89e-06,3,0.407,2,229400,-8.822,0.0765,6Vc5wAMmXdKIAM7WUoEb7N,1
+Dancing On My Own - Tiësto Remix,Calum Scott,Dancing On My Own (Tiësto Remix),0.66,0.0894,122.048,0.0352,0.0206,0.00101,4,0.612,1,224392,-5.571,0.123,2yqDbROZQLI1xQxgDVCSxQ,1
+Listen To Your Heart,Roxette,Look Sharp! (2009 Version),0.583,0.111,86.063,0.0275,0.108,0,4,0.539,1,328093,-4.935,0.337,78TnMTAFmWUWWCgNXR7D3K,0
+Dancing On My Own - Acoustic,Calum Scott,Dancing On My Own (Acoustic),0.0756,0.147,117.559,0.0401,0.956,1.91e-06,4,0.525,1,253482,-11.232,0.442,7tOAtB2F50KXEkw86frba6,1
+Big Yellow Taxi,Lennon & Maisy,Big Yellow Taxi,0.269,0.09,170.019,0.0513,0.849,0,4,0.652,2,133235,-14.082,0.525,4p0mcDUnm4Zfk644WNJqSp,1
+Dancing On My Own,Calum Scott,Dancing On My Own,0.172,0.0793,112.655,0.0329,0.839,1.81e-05,4,0.686,1,260004,-8.722,0.197,5dB00dkUFlruwbxVmdOPSE,1
+Slide,Calvin Harris,Slide,0.795,0.254,104.066,0.0545,0.498,1.21e-06,4,0.736,1,230813,-3.299,0.511,6gpcs5eMhJwax4mIfKDYQk,0
+Sorry,Justin Bieber,Purpose (Deluxe),0.768,0.308,100.209,0.0476,0.0865,0,4,0.605,0,200787,-3.724,0.414,09CtPGIpYB4BrO8qb1RGsF,0
+Kanye,The Chainsmokers,Kanye,0.624,0.117,128.037,0.0543,0.00213,2.01e-06,4,0.598,10,229947,-6.581,0.137,5brMyscUnQg14hMriS91ks,1
+Die Young,Kesha,Warrior (Deluxe Version),0.7,0.215,128.001,0.046,0.00498,0.000125,4,0.711,1,211920,-4.805,0.801,6mnjcTmK8TewHfyOp3fC9C,0
+The Fortunate,Cartel,Cartel,0.803,0.13,138.993,0.0356,0.0011,0,4,0.608,1,173573,-3.596,0.922,087iMBgZpCw2BE9gyPHDKh,1
+I Lived,OneRepublic,Native,0.85,0.26,119.985,0.0452,0.0728,0,4,0.596,9,234547,-5.402,0.386,7D49Iig0avHre9RFSUMkd2,1
+Best Days - Album Version Final,Matt White,Best Days,0.847,0.262,126.902,0.0395,0.0324,0,4,0.618,11,180933,-3.705,0.741,1uEdbI2Be98rNOkYRFzdaX,1
+Ho Hey,Nashville Cast,Ho Hey,0.453,0.0965,82.987,0.0258,0.6,0,4,0.687,1,129227,-8.267,0.437,6su14iUXShlMI5SnEkwe4J,1
+This Town,Niall Horan,This Town,0.407,0.126,111.916,0.0297,0.711,0,4,0.69,9,232600,-7.739,0.181,5dTJMpqiELczVuHJP3OAEu,1
+Cake,Flo Rida,This Is A Challenge,0.854,0.179,105.078,0.0523,0.0729,1.63e-06,4,0.786,2,157165,-4.247,0.687,6t2ubAB4iSYOuIpRAOGd4t,1
+Tear In My Heart,Twenty One Pilots,Blurryface,0.632,0.0722,120.113,0.0489,0.0189,0,4,0.655,2,188493,-4.802,0.447,3bnVBN67NBEzedqQuWrpP4,1
+Controlla,Drake,Views,0.478,0.114,92.326,0.287,0.0873,0,4,0.545,10,245227,-11.066,0.317,3O8NlPh2LByMU9lSRSHedm,0
+Caroline,Aminé,Caroline,0.394,0.131,120.058,0.492,0.303,0,4,0.945,10,209747,-8.571,0.743,5GFDrUTLGJix84sNhjCG0g,1
+Say You Won't Let Go,James Arthur,Back from the Edge,0.557,0.0902,85.043,0.059,0.695,0,4,0.358,10,211467,-7.398,0.494,5uCax9HTNlzGybIStD3vDh,1
+BedRock,Young Money,We Are Young Money,0.659,0.141,148.001,0.225,0.109,0,4,0.732,8,288133,-6.089,0.575,3iL2l5gUqyPS6vDwJFgJTR,1
+With A Little Help From My Friends - Remix,The Beatles,With A Little Help From My Friends (Remix),0.628,0.22,112.345,0.0276,0.114,0,4,0.673,1,165293,-6.997,0.711,1ub9sWktOY37BArPD9trKF,0
+Replay,Iyaz,Replay,0.751,0.168,91.031,0.0708,0.173,0,4,0.706,9,182307,-6.323,0.195,5vlEg2fT4cFWAqU5QptIpQ,1
+Something Just Like This,The Chainsmokers,Something Just Like This,0.649,0.174,102.996,0.0362,0.0306,2.46e-05,4,0.607,11,247627,-6.695,0.505,1dNIEtp7AY3oDAKCGg2XkH,0
+Fresh Eyes,Andy Grammer,Fresh Eyes,0.544,0.144,122.047,0.0332,0.562,2.4e-05,4,0.822,0,198001,-6.797,0.861,4nMlau89VAjmV7agkl7OY3,1
+Don't Wake Me Up,Chris Brown,Fortune (Deluxe Version),0.691,0.144,127.967,0.051,0.0548,0,4,0.602,7,222307,-5.197,0.206,12Ns5IphkblPmHxpRILG9t,0
+Down,Jay Sean,All Or Nothing,0.693,0.0778,66.002,0.0311,0.0149,0,4,0.663,11,212107,-4.505,0.71,7LP4Es66zdY7CyjepqmvAg,0
+Closer,The Chainsmokers,Closer,0.524,0.111,95.01,0.0338,0.414,0,4,0.748,8,244960,-5.599,0.661,7BKLCZ1jbUBVqRi2FVlTVw,1
+All Night Longer,Sammy Adams,All Night Longer,0.649,0.0683,127.028,0.063,0.000652,0,4,0.712,1,177093,-4.753,0.616,1vNn7rVQT6UtEW1NGH53fT,1
+Someone New,Hozier,Hozier,0.533,0.332,183.791,0.0473,0.429,3.66e-06,4,0.443,7,222813,-5.956,0.596,0efT4YKQLQx2YHbp6vgRX8,1
+Something I Need,OneRepublic,Native,0.59,0.118,98.991,0.03,0.168,0,4,0.686,7,241267,-6.923,0.629,4KANJH1baadr3U7XsVbM17,1
+I Want To Hold Your Hand - Remastered 2015,The Beatles,1 (Remastered),0.715,0.311,130.726,0.0476,0.386,0,4,0.49,7,145747,-5.549,0.866,4pbG9SUmWIvsROVLF0zF9s,1
+Girlfriend,Avril Lavigne,The Best Damn Thing,0.959,0.209,163.983,0.102,0.000738,0.000206,4,0.56,7,216600,-2.433,0.67,5HbCnVLXRyZVxnreOPgJCK,1
+Shut Up and Dance,WALK THE MOON,TALKING IS HARD,0.866,0.257,128.038,0.0619,0.00701,0,4,0.578,1,199080,-3.804,0.619,4kbj5MwxO1bq9wjT5g9HaA,1
+Kola,Damien Jurado,Visions of Us on the Land,0.0945,0.109,124.146,0.048,0.969,0.00445,4,0.656,4,154787,-16.02,0.235,6ntcJV1JvSdWaHXxFsPDon,1
+I'm the One,DJ Khaled,I'm the One,0.667,0.134,80.984,0.0367,0.0533,0,4,0.599,7,288877,-4.267,0.817,72Q0FQQo32KJloivv5xge2,1
+"Take Me Home, Country Roads - Original Version",John Denver,John Denver's Greatest Hits,0.378,0.13,81.844,0.0264,0.744,0,4,0.456,9,191000,-10.218,0.648,0eZcFq1zvOh6buqrL4VBhP,1
+Make Me Proud,Drake,Take Care (Deluxe),0.506,0.151,131.895,0.131,0.00296,0.000304,4,0.691,1,219893,-10.141,0.35,0pN1Ld0Fr9DTUaCGbKRvlF,1
+Baby - Acoustic Version,Justin Bieber,My Worlds Acoustic,0.691,0.078,129.968,0.0474,0.106,0,4,0.816,2,215453,-6.278,0.759,0RJC486bAmd4ElLbGgXmWk,1
+Morning Song,The Lumineers,The Lumineers (Deluxe Edition),0.206,0.0276,118.026,0.0452,0.644,2.05e-06,3,0.502,0,318440,-9.672,0.296,6mB54OSqp7n5ctlIoqtwkz,1
+Call Your Girlfriend (Live),Lennon & Maisy,Live YouTube Sessions,0.231,0.102,138.964,0.332,0.909,7.88e-06,4,0.605,7,108352,-13.699,0.376,0Ip8XSHPhJWK6qJhz9OJ3b,0
+Break Up Every Night,The Chainsmokers,Memories...Do Not Open,0.806,0.0872,149.999,0.0437,0.00411,0,4,0.624,1,207520,-5.957,0.528,6cPyTS0Kk2sc4xQwC93kOg,1
+House Party - Acoustic Mixtape,Sam Hunt,Between The Pines (Acoustic Mixtape),0.675,0.207,103.966,0.0446,0.439,0,4,0.799,3,187293,-5.912,0.827,6vgmCLfl9GnkHL8LQ4wRly,1
+The Circle Game,Joni Mitchell,Ladies Of The Canyon,0.198,0.185,117.749,0.0314,0.95,0,3,0.599,11,292600,-12.116,0.329,6MYDgkfu34kRRIdMfleVCV,1
+Sugar,Maroon 5,V,0.768,0.0848,120.084,0.0346,0.052,0,4,0.751,1,235493,-7.089,0.881,2iuZJX9X9P0GKaE93xcPjk,1
+Daisy,Zedd,True Colors,0.599,0.151,112.082,0.0394,0.151,0,4,0.583,2,174413,-5.774,0.167,4ccQmBycgXDYtIA7Z1i32V,1
+"What Is This Feeling? - From ""Wicked"" Original Broadway Cast Recording/2003",Stephen Schwartz,Wicked,0.427,0.232,151.997,0.0778,0.735,0,4,0.622,1,212227,-8.551,0.568,1WitAaRV8SMreQaNLcBjdQ,1
+Body Like A Back Road,Sam Hunt,Body Like A Back Road,0.469,0.103,98.963,0.0326,0.463,1.04e-06,4,0.731,5,165387,-7.226,0.631,7mldq42yDuxiUNn08nvzHO,1
+Baby,Justin Bieber,My World 2.0,0.841,0.122,65.024,0.232,0.0544,0,4,0.656,5,214240,-5.183,0.522,6epn3r7S14KUqlReYr77hA,0
+She Sets The City On Fire - Acoustic,Gavin DeGraw,She Sets The City On Fire (Acoustic),0.563,0.11,125.913,0.0387,0.0408,0,4,0.752,4,217138,-6.17,0.767,0jqT4H8la78ThaljY77I0q,1
+Shattered [Turn The Car Around],O.A.R.,All Sides,0.784,0.19,105.973,0.0352,0.0175,0,4,0.571,11,255493,-6.396,0.462,32oh9wNU89gmX6CohLTdeG,1
+Blues Run the Game,Simon & Garfunkel,The Columbia Studio Recordings (1964-1970),0.135,0.103,91.688,0.0314,0.907,0,4,0.506,11,171440,-17.576,0.455,3MQ0WSHBqFkDr8oUJevKyt,1
+All Night,The Vamps,All Night,0.768,0.324,144.971,0.0342,0.00262,0,4,0.564,8,197793,-6.431,0.362,31t0ATifZW5CW3XP2QUsUW,1
+Suit And Jacket,Judah & the Lion,Folk Hop N' Roll (Deluxe),0.596,0.102,164.233,0.0471,0.246,1.66e-05,4,0.448,10,222256,-8.485,0.122,2ZYBwkmtYhgUj1A7teYAZ7,1
+House Party,Sam Hunt,Montevallo,0.854,0.0262,103.952,0.0503,0.129,0,4,0.749,8,190240,-5.245,0.842,1TwLKNsCnhi1HxbIi4bAW0,1
+Sleep On The Floor,The Lumineers,Cleopatra,0.431,0.13,142.14,0.0344,0.249,0,4,0.389,7,211851,-8.061,0.275,5MMZJtHOiH1RmQSSe3DJdg,1

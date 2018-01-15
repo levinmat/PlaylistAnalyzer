@@ -1,0 +1,14 @@
+Exploring related artists starting from Grateful Dead with 10 recursive hops...
+Explored 3489 artists in 10 recursive hops, starting from Grateful Dead.
+Artists with most live albums found:
+81 - Grateful Dead                  - 4TMHGUX5WI7OOm53PqSDAT
+50 - Phish                          - 5wbIWUzTPuTxTyG6ouQKqz
+14 - Jerry Garcia Band              - 1YTe4dNIoWX3iHX8H4xVeM
+8  - Quicksilver Messenger Service  - 7DCnwoFMqGN6eZULdcLZeL
+8  - The Allman Brothers Band       - 4wQ3PyMz3WwJGI5uEqHUVR
+6  - Guster                         - 34XlPCFfB4vT7P1ekWq9Jc
+5  - Umphrey's McGee                - 7mQilAy42MqNPqUFqK4Z0o
+5  - Jefferson Starship             - 3HC7NcxQx2Yk0fWoRKJ0xF
+3  - Jefferson Airplane             - 2qFr8w5sWUITRlzZ9kZotF
+2  - Jerry Garcia & Merl Saunders   - 7h3pabHj3Z3fF3sJgMfCGB
+Elapsed Time: 1107.75606394s

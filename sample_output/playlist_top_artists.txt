@@ -1,0 +1,20 @@
+Top 15 artists in playlist:
+10 songs -  Kendrick Lamar                
+10 songs -  Frank Ocean                   
+9 songs  -  Kanye West                    
+8 songs  -  Action Bronson                
+5 songs  -  Joey Bada$$                   
+5 songs  -  BadBadNotGood                 
+5 songs  -  Anderson .Paak                
+4 songs  -  Tyler, The Creator            
+4 songs  -  The Weeknd                    
+4 songs  -  Statik Selektah               
+4 songs  -  SZA                           
+4 songs  -  Ghostface Killah              
+4 songs  -  Chance The Rapper             
+4 songs  -  Calvin Harris                 
+3 songs  -  Thundercat                    
+
+81 different artists appeared in this playlist.
+
+Program Complete
