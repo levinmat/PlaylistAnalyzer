@@ -1,5 +1,5 @@
 # Playlist Analyzer for Spotify
-#### Created by [Matt Levin](https://www.matt-levin.com/)
+#### *Created by [Matt Levin](https://www.matt-levin.com/)*
 
 *Need a playlist for a group study session that you'll all enjoy? Want a custom generated playlist based on the audio features of your Top 100 songs? Interested in learning more about your music taste?* 
 
@@ -18,7 +18,7 @@ This project consists of several features listed below, with more details about 
 * **Classify which playlist a song is most likely to be in based on its audio features.**
 * **Predict which songs a user would enjoy, creating a Spotify playlist musically similar to their Top 100 playlist.**
 * **Generate a playlist of the most danceable songs from several input playlists.**
-* **Make a playlist the tracks best suited for quiet studying from several input playlists.**
+* **Make a playlist of the tracks best suited for quiet studying from several input playlists.**
 * **Find and display the artists with the most tracks in a playlist.**
 * **Cluster the tracks from multiple playlists based on any subset of audio features, and visualize the resulting clusters.**
 
@@ -94,8 +94,8 @@ TODO:
 
 #### Classification and Prediction
 
-The following two examples show how well the classifier is able to distinguish between musical tastes. The first playlist is from a user who clearly enjoys ______ and ____, while the second example is almost exclusively rap/hip-hop. The generated playlists reflect this distinction and contain a mix of tracks from their original Top 100 list as well as new tracks that they would very likely enjoy (as confirmed with feedback from the users).
-*Example 1:* [Original Playlist One]() was used to create [Generated Playlist One]().
+The following two examples show how well the classifier is able to distinguish between musical tastes. The first playlist is from a user who clearly enjoys ______ and ____, while the second example is almost exclusively rap/hip-hop. The generated playlists reflect this distinction and contain a mix of tracks from their original Top 100 list as well as new tracks that they would very likely enjoy (as confirmed with feedback from the users).<br/>
+*Example 1:* [Original Playlist One]() was used to create [Generated Playlist One]().<br/>
 *Example 2:* [Original Playlist Two]() was used to create [Generated Playlist Two]().
 
 The classification accuracy was benchmarked with many permutations of parameters, with an example benchmarking output of the MLP classifier is available [here](). The MLP generally performed better than the Naive Bayes model, correctly labeling ~35% of the dataset on average. This may seem low, however randomly assigning labels would result in ~8% accuracy, since there are 12 possible playlists to choose from. When you also take into account that some of these 12 users have similar music tastes, a 'wrong' classification could still assign the track to someone who would enjoy it, just not the playlist where it was originally found.

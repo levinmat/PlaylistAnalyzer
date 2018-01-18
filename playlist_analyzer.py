@@ -2,8 +2,6 @@
 
 """
 TODO: 
-   unittest - all functions (params?)
-   test CL args !important - all (many possible combos) 
    sample_output - graphs, benchmarking classify
    comments - for each function, top of file, inner code
    README.md - Focus on MLP benchmarking, generating THEN dance/study lists THEN rand things: top artists, clustering, 
@@ -195,9 +193,9 @@ class Analyzer:
     
     """
     def predict_playlist(self, playlist='my_top_100', n=100, 
-                             features=['energy', 'liveness', 'speechiness', 
-                                      'acousticness', 'instrumentalness', 'danceability', 
-                                      'valence', 'loudness_0_1', 'tempo_0_1']):
+                         features=['energy', 'liveness', 'speechiness', 
+                                   'acousticness', 'instrumentalness', 'danceability', 
+                                   'valence', 'loudness_0_1', 'tempo_0_1']):
         
         self.check_features(features) # Make sure features are valid and generated if applicable
         self.check_playlist(playlist) # Make sure playlist is a valid option (no '.csv' in filename)
@@ -438,7 +436,7 @@ class Analyzer:
     def gmm_cluster(self, show_plot=True, n_clusters=5,
                     features=['energy', 'liveness', 'tempo_0_1', 'speechiness', 
                               'acousticness', 'instrumentalness', 'danceability', 
-                                    'loudness_0_1', 'valence']):
+                              'loudness_0_1', 'valence']):
         
         self.check_features(features) # Make sure features are valid/generated already if applicable
         print('Starting GMM clustering with {} clusters and features = {}'.format(n_clusters, features))
@@ -450,7 +448,7 @@ class Analyzer:
         self.data['GMM'] = Y
 
         if show_plot:
-            self.plot_clusters(n_clusters, features=features, algorithm='GMM')
+            self.plot_clusters(features=features, algorithm='GMM')
 
     
     """
@@ -489,7 +487,7 @@ class Analyzer:
         self.data['GMM'] = Y
 
         if show_plot:
-            self.plot_clusters(best_n, features=features, algorithm='GMM')
+            self.plot_clusters(features=features, algorithm='GMM')
 
     """
     Performs spectral clustering on all the data, using n clusters.
@@ -517,7 +515,7 @@ class Analyzer:
         self.data['spectral'] = Y
 
         if show_plot:
-            self.plot_clusters(n, features=features, algorithm='spectral')
+            self.plot_clusters(features=features, algorithm='spectral')
    
     """
     Plots the clusters (in different colors)
@@ -526,23 +524,23 @@ class Analyzer:
             with each cluster in a different color. 
     
     PARAMS:
-        n_clusters - The number of distinct clusters used
-        algorithm  - {'GMM' or 'spectral'} The algorithm you want to plot (which column of self.data to use) 
-        x        [Optional] - The feature for the x axis, defaults to None which cycles through all features
-        y        [Optional] - The feature for the y axis, defaults to None which cycles through all features
-        features [Optional] - The list of features to plot, each used as the x and y axis with all others
+        algorithm  [Optional] - {'GMM' or 'spectral'} The clustering algorithm you want to plot
+        x          [Optional] - The feature for the x axis, default to None which cycles through all features
+        y          [Optional] - The feature for the y axis, default to None which cycles through all features
+        features   [Optional] - The list of features to plot, each used as the x and y axis with all others
     RETURNS:
         None, displays plots in a new window (one at a time)
     
     """
-    def plot_clusters(self, n_clusters, algorithm='GMM', 
-                      x=None, y=None,
+    def plot_clusters(self, algorithm='GMM', x=None, y=None,
                       features=['energy', 'liveness', 'tempo_0_1', 'speechiness', 
                                 'acousticness', 'instrumentalness', 'danceability', 
                                 'loudness_0_1', 'valence']):
         
         # Make sure clustering has been run already and features valid
         self.check_features(features + [algorithm])
+
+        n_clusters = self.data[algorithm].max() + 1 # Find the number of clusters used
 
         # Bar chart - Cluster count for each file (each playlist)
         fig, ax = plt.subplots()
@@ -553,12 +551,15 @@ class Analyzer:
             for cluster, group in data.groupby([algorithm]):
                 counts[i,cluster] = len(group)
             i += 1
-        # Label the x axis values with the source names (just the part before the first _)
-        plt.xticks(range(len(self.sources)), map(lambda s: s.split('_')[0].title(), self.sources))
         plt.title('Cluster Frequencies in Each Playlist')
         fig.canvas.set_window_title('Cluster_Frequencies_in_Each_Playlist_{}_{}'.
                                     format(algorithm, n_clusters))
-        pd.DataFrame(counts).plot.bar(legend=None, ax=ax, fig=fig)
+        counts_df = pd.DataFrame(counts)
+        counts_df.plot.bar(legend=None, ax=ax, fig=fig)
+        # Label the x axis values with the source names (just the part before the first _)   
+        plt.xticks(range(len(self.sources)), map(lambda s: s.split('_')[0].title(), self.sources))  
+        plt.xlabel('Playlist')
+        plt.ylabel('Number of Tracks in Each Cluster')
         plt.show()
 
         # Scatterplot of clusters (each pair of features used)
@@ -719,7 +720,7 @@ class Writer:
         if type(playlist) is str: # Was given ID/URI not the Playlist object
             playlist = sp.user_playlist(username, playlist.split(':')[0]) # Get playlist object
     
-        outfile = "csv/" + playlist['name'].replace(' ', '_').lower() + ".csv"
+        outfile = 'csv/' + playlist['name'].replace(' ', '_').lower() + '.csv'
     
         print("\nWriting playlist's tracks metadata and audio feature analysis to {}...".format(outfile))
         metadata = {} # Metadata = {track_id: {'name': Track Name, 'artist': Primary Artist, 'album': Album}}
@@ -745,7 +746,7 @@ class Writer:
         # Open the CSV (rewrites old data, creates if doesn't exist)
         writer = csv.writer(open(outfile, 'w+')) 
     
-        header_row = ["Track Name", "Primary Artist", "Album"] # The header row of the CSV, first the Metadata
+        header_row = ['Track Name', 'Primary Artist', 'Album'] # The header row of the CSV, first the Metadata
         for feature in all_tracks_features[0].keys(): # Add all the audio feature names to the header row
             if feature not in ['track_href', 'analysis_url', 'uri', 'type']: # Ignore some columns
                 header_row.append(feature.encode('utf-8')) 
@@ -882,26 +883,28 @@ class TestAnalyzer(unittest.TestCase):
         print('\n.......... testing cluster plotting .................')
         # First make sure some clusters have been generated
         analyzer.gmm_cluster(n_clusters=3, show_plot=False)
-        analyzer.plot_clusters(3, algorithm='GMM', x='energy', y='valence') # Plot specific x,y combo only
-        analyzer.plot_clusters(3, algorithm='GMM', y='valence') # Cycle through each x
-        analyzer.plot_clusters(3, algorithm='GMM', x='energy')  # Cycle through each y
+        analyzer.plot_clusters(algorithm='GMM', x='energy', y='valence') # Plot specific x,y combo only
+        analyzer.plot_clusters(algorithm='GMM', y='valence') # Cycle through each x
+        analyzer.plot_clusters(algorithm='GMM', x='energy')  # Cycle through each y
            
     @unittest.skipIf(skip_tests, '')
     def test_benchmark_gmm(self):
         print('\n...... testing benchmark GMM clustering ...........')
         
-        # Use all features - then show plots
+        # Use all features - then show all plots
         print('Benchmarking GMM clustering using all features...')
-        analyzer.benchmark_gmm_cluster(show_plot=True)
+        analyzer.benchmark_gmm_cluster(show_plot=False)
+        analyzer.plot_clusters(algorithm='GMM', y='valence')
                 
         # Only use energy and valence - then show plots
-        print('Benchmarking GMM clustering using only energy and valence features...')        
-        analyzer.benchmark_gmm_cluster(show_plot=True, features=['energy', 'valence'])
+        print('Benchmarking GMM clustering using only 2 features...')  
+        analyzer.benchmark_gmm_cluster(show_plot=True, features=['energy','valence'])
     
-    @unittest.skipIf(skip_tests, '')
+    #@unittest.skipIf(skip_tests, '')
     def test_spectral_clustering(self):
         print('\n........... testing spectral clustering ...........')
-        analyzer.spectral_cluster()
+        #analyzer.spectral_cluster()        
+        analyzer.spectral_cluster(features=['energy','valence'])
         
     def tearDown(self):
         print('\n')
@@ -1027,12 +1030,12 @@ if __name__ == '__main__':
             if '-n' in args:
                 n = int(args['-n'])
             # For now it just uses all features, eventually that could be an argument as well
-            if algorithm == 'GMM' or algorithm == 'gmm':
+            if algorithm.lower() == 'gmm':
                 if n: # If n_clusters was given, just use that
                     analyzer.gmm_cluster(show_plot=True, n_clusters=n)
                 else: # If not, run benchmarking to find the best fitting n_clusters
                     analyzer.benchmark_gmm_cluster(show_plot=True)
-            elif algorithm == 'spectral':
+            elif algorithm.lower() == 'spectral':
                 if not n:
                     n = 5 # Default to 5 if not given
                 analyzer.spectral_cluster(show_plot=True, n_clusters=n)
