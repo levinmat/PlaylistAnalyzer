@@ -82,7 +82,7 @@ To use the script use `python playlist_analyzer.py` with any of the following se
 
 ## Sample Output
 The following subsections contain example results from the different features contained in this project. Some are links to open a playlist in Spotify, while others are images of plots, or simply text.
-*Note: Any linked Spotify playlists may contain explicit content, parental advisory is advised.*
+*Note: Any linked Spotify playlists may contain explicit content, parental discretion is advised.*
 
 #### Classification and Prediction
 
@@ -128,12 +128,12 @@ The output for the top artists feature is more simple (just text) and can be see
 Clustering was performed using various subsets of the available audio features, and two different clustering algorithms: Gaussian Mixture Model (GMM) and Spectral. The following subsections contain the output for the distribution of clusters among different playlists, a comparison of GMM and Spectral clustering, and a comparison between clustering using all the features versus only using two.
 
 
-###### Cluster Distribution Bar Chart
+##### Cluster Distribution Bar Chart
 The following plot shows the number of tracks that are assigned to each cluster for each different playlist. The goal of this plot is to emphasize how the different playlists, thus the different users, have different musical tastes, and how that can be identified with clustering. Being familiar with the playlists and the users who provided them, it seems likely that the green line/cluster represents rap/trap music, while the purple line is acoustic/singer-songwriter tracks, and the blue line is for rock/funk. Of course, this is not necessarily the case, but it would make sense based on the content of the different playlists. The other clusters are harder to identify from this graph, however the key takeaway is that clustering is able to differentiate the different music tastes based on audio features. 
 ![Cluster_Frequencies_in_Each_Playlist_GMM_6.png](sample_output/Cluster_Frequencies_in_Each_Playlist_GMM_6.png)
 *This particular graph uses Gaussian Mixture Model clustering on all the available audio features, using 6 cluster centers.*
 
-###### Gaussian Mixture Model versus Spectral Clustering
+##### Gaussian Mixture Model versus Spectral Clustering
 So far two different methods for clustering have been implemented: Gaussian Mixture Modeling and Spectral. Below is an example comparing the different clusters found when only the energy and valence audio features are used in clustering. Of course, the order/color of the clusters are arbitrary, however there are several notable differences between the two algorithms in the way the tracks are split up among the resulting clusters. In the future, I plan on adding k-means clustering, and possibly other algorithms as well.
 
 GMM Clustering            |  Spectral Clustering
@@ -141,11 +141,11 @@ GMM Clustering            |  Spectral Clustering
 ![Valence_vs_Energy_2D_GMM_5.png](sample_output/Valence_vs_Energy_2D_GMM_5.png)  | ![Valence_vs_Energy_2D_spectral_5.png](sample_output/Valence_vs_Energy_2D_spectral_5.png)
 
 
-###### Clustering Using All Features versus Only a Subset
+##### Clustering Using All Features versus Only a Subset
 The following are both created using 5 clusters and a Spectral clustering. The left column is clustered using only the valence and acousticness audio features, while the right column used all the available features. Clearly the plots are very different, as the left column shows how we typically visualize clustering, while the right column was clustered using more features than could fit on this 2D plot. 
 Using Only Energy and Valence  |  Using All Features
-:-------------------------:|:-------------------------:
-![Valence_vs_Acousticness_2D_spectral_5.png](sample_output/Valence_vs_Acousticness_2D_spectral_5.png)  | ![Valence_vs_Acousticness_spectral_5.png](sample_output/Valence_vs_Acousticness_spectral_5.png)
+:-----------------------------:|:-------------------------:
+![Valence_vs_Acousticness_2D_spectral_5.png](sample_output/Valence_vs_Acousticness_2D_spectral_5.png)|![Valence_vs_Acousticness_spectral_5.png](sample_output/Valence_vs_Acousticness_spectral_5.png)
 
 
 ## Summary
