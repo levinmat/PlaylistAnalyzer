@@ -108,19 +108,17 @@ class Analyzer:
          None
     """
     def __init__(self, files='all'):
-        if(files == 'all'): # Defaults to all files in the csv folder
-            files = glob.glob('csv/*')
+        if(files == 'all'): # Defaults to all csv files in the csv folder
+            files = glob.glob('csv/*.csv')
         
         # Read each selected csv file into it's own dataframe - Add a column 'source' with the filename
-        dfs = [pd.read_csv(f).assign(source=os.path.basename(f).split('.')[0]) for f in files]
-        
+        dfs = map(lambda f: pd.read_csv(f).assign(source=os.path.basename(f).split('.')[0]), files)
         # Combine the dataframes into self.data
-        self.data = pd.concat(dfs, ignore_index=True)  
+        self.data = pd.concat(dfs, ignore_index=True)
         # List of source playlists for easy access since it is needed a lot
         self.sources = self.data.source.unique()
         
-        # Creates tempo_0_1 and loudness_0_1 0-1 scaled columns from tempo and loudness
-        # (Uses min/max normalization as opposed to mean/deviation)
+        # Creates tempo_0_1 and loudness_0_1, 0-1 scaled columns for tempo and loudness
         tempo = self.data['tempo']
         self.data['tempo_0_1'] = (tempo - tempo.min()) / (tempo.max() - tempo.min())
     
@@ -158,10 +156,7 @@ class Analyzer:
 
         # Create MLP classifier, train, count how many were classified correctly
         mlp = MLPClassifier(hidden_layer_sizes=layers,
-                           activation="relu", 
-                           solver='adam', 
                            alpha=0.0001, 
-                           learning_rate="constant", 
                            learning_rate_init=0.001, 
                            max_iter=1000, 
                            shuffle=True, 
@@ -270,10 +265,7 @@ class Analyzer:
             for seed in seeds:
                 # Create MLP classifier, train, count how many were classified correctly
                 mlp = MLPClassifier(hidden_layer_sizes=layers,
-                                    activation="relu", 
-                                    solver='adam', 
                                    alpha=0.0001, 
-                                   learning_rate="constant", 
                                    learning_rate_init=0.001, 
                                    max_iter=1000, 
                                    shuffle=True, 
@@ -300,10 +292,7 @@ class Analyzer:
 
         # Set self.mlp_classifier to best performing model for later use
         self.mlp_classifier = MLPClassifier(hidden_layer_sizes=best_score[1],
-                                            activation="relu", 
-                                            solver='adam', 
                                             alpha=0.0001, 
-                                            learning_rate="constant", 
                                             learning_rate_init=0.001, 
                                             max_iter=1000,
                                             random_state=best_score[2],
@@ -364,7 +353,7 @@ class Analyzer:
             playlists = self.keys      
 
         # Add a column dance_value that is a combination of danceability and energy
-        self.data['dance_value'] = self.data['danceability'] + self.data['energy']
+        self.data['dance_value'] = self.data['danceability'] + (self.data['energy'] / 2)
         tracks = []
         for playlist in playlists:
             df = self.data.loc[self.data['source'] == playlist] # Select the songs from that playlist
@@ -541,6 +530,10 @@ class Analyzer:
         self.check_features(features + [algorithm])
 
         n_clusters = self.data[algorithm].max() + 1 # Find the number of clusters used
+        
+        is_2D = '' # For the title of the graph window to say 2D if only using 2 features
+        if len(features) == 2:
+            is_2D = '2D_'
 
         # Bar chart - Cluster count for each file (each playlist)
         fig, ax = plt.subplots()
@@ -552,8 +545,8 @@ class Analyzer:
                 counts[i,cluster] = len(group)
             i += 1
         plt.title('Cluster Frequencies in Each Playlist')
-        fig.canvas.set_window_title('Cluster_Frequencies_in_Each_Playlist_{}_{}'.
-                                    format(algorithm, n_clusters))
+        fig.canvas.set_window_title('Cluster_Frequencies_in_Each_Playlist_{}{}_{}'.
+                                    format(is_2D, algorithm, n_clusters))
         counts_df = pd.DataFrame(counts)
         counts_df.plot.bar(legend=None, ax=ax, fig=fig)
         # Label the x axis values with the source names (just the part before the first _)   
@@ -579,8 +572,8 @@ class Analyzer:
                     plt.xlabel(x_feature.title())
                     plt.ylabel(y_feature.title())
                     plt.title(y_feature.title() + ' versus ' + x_feature.title())
-                    fig.canvas.set_window_title('{}_vs_{}_{}_{}'.format(y_feature.title(), 
-                                                            x_feature.title(), algorithm, n_clusters))
+                    fig.canvas.set_window_title('{}_vs_{}_{}{}_{}'.format(y_feature.title(), 
+                                                            x_feature.title(), is_2D, algorithm, n_clusters))
                     plt.show()
 
 
@@ -638,13 +631,13 @@ class Analyzer:
             print('Top artists in playlist:')
         else:
             print('Top {} artists in playlist:'.format(n))    
-        # Print them in order in a column format (I wish CCR picked a shorter name!)
+        # Print them in order in a column format 
         for (num, artist) in heapq.nlargest(n, heap):
-            print("{1:<8} -  {0:<30}".format(artist[:30],  # Only first 30 characters of song name
-                                       str(num) + (" song " if num==1 else " songs")))  # Plural if >1
+            print('{1:<8} -  {0:<30}'.format(artist[:30],  # Only first 30 characters of song name
+                                       str(num) + (' song ' if num==1 else ' songs')))  # Plural if >1
     
         # Diversity (can be >100 because songs can have multiple artists)
-        print("\n{} different artists appeared in this playlist.\n".format(len(artists_map.keys())))    
+        print('\n{} different artists appeared in this playlist.\n'.format(len(artists_map.keys())))    
         
     
     """
@@ -660,6 +653,7 @@ class Analyzer:
     def check_features(self, features):
         for f in features:
             if f not in self.data.keys():
+                # Generate column if its a cluster, or raise an error
                 features.remove(f)
                 if f == 'GMM':
                     self.gmm_cluster(show_plot=False, features=features)
@@ -673,7 +667,7 @@ class Analyzer:
     Helper function, makes sure the playlist is a valid option
 
     PARAMS:
-         playlist - The playlist csv filenmae to check
+         playlist - The playlist CSV filename to check
     RETURNS:
          None, raises an error if there is a problem
     
@@ -828,8 +822,8 @@ class TestAnalyzer(unittest.TestCase):
     @unittest.skipIf(skip_tests, '')
     def test_predict_mlp(self):
         print('\n........... testing predict MLP ...................')
-        analyzer.predict_playlist(playlist='my_top_100')
-    
+        analyzer.predict_playlist('rik_top_100')
+        
     @unittest.skipIf(skip_tests, '')
     def test_benchmark_mlp(self):
         print('\n........... testing benchmark MLP .................')
@@ -838,13 +832,14 @@ class TestAnalyzer(unittest.TestCase):
     @unittest.skipIf(skip_tests, '')
     def test_dance_party(self):
         print('\n............ testing dance party ..................')
-        analyzer.dance_party(playlists=['p_top_100', 'a_top_100', 'ri_top_100', 'm_top_100'])    
+        source_playlists = ['p_top_100', 'a_top_100', 'ri_top_100']
+        analyzer.dance_party(source_playlists, n=5)
     
     @unittest.skipIf(skip_tests, '')
     def test_study_buddies(self):
         print('\n.......... testing study buddies ..................')
         source_playlists = ['rik_top_100', 'j_top_100', 'am_top_100', 'm_top_100', 'c_top_100']
-        analyzer.study_buddies(playlists=source_playlists, n=6)
+        analyzer.study_buddies(source_playlists, n=6)
     
     @unittest.skipIf(skip_tests, '')
     def test_invalid_playlist(sef):
@@ -894,18 +889,26 @@ class TestAnalyzer(unittest.TestCase):
         # Use all features - then show all plots
         print('Benchmarking GMM clustering using all features...')
         analyzer.benchmark_gmm_cluster(show_plot=False)
-        analyzer.plot_clusters(algorithm='GMM', y='valence')
+        analyzer.plot_clusters(algorithm='GMM')
                 
         # Only use energy and valence - then show plots
         print('Benchmarking GMM clustering using only 2 features...')  
         analyzer.benchmark_gmm_cluster(show_plot=True, features=['energy','valence'])
     
-    #@unittest.skipIf(skip_tests, '')
+    @unittest.skipIf(skip_tests, '')
     def test_spectral_clustering(self):
         print('\n........... testing spectral clustering ...........')
-        #analyzer.spectral_cluster()        
-        analyzer.spectral_cluster(features=['energy','valence'])
-        
+        analyzer.spectral_cluster()
+        analyzer.spectral_cluster(features=['acousticness','valence'])
+      
+    @unittest.skipIf(skip_tests, '')        
+    def test_spectral_vs_gmm(self):
+        print('\n........... testing spectral vs GMM ...........')
+        print('Spectral...')
+        analyzer.spectral_cluster(features=['energy','valence'], n_clusters=5)
+        print('GMM...')
+        analyzer.gmm_cluster(features=['energy','valence'], n_clusters=5)
+           
     def tearDown(self):
         print('\n')
       
@@ -930,34 +933,33 @@ the appropriate function. If no command line arguments are given, unittest.main(
 """
 if __name__ == '__main__':
     
-    # Access enviornment variables for authenticating with Spotify
+    # Authenticate with Spotify - Access environment variables and request auth token
     try:
         username = os.environ['SPOTIFY_USERNAME']
-        client_id = os.environ['SPOTIFY_CLIENT_ID']
-        client_secret = os.environ['SPOTIFY_CLIENT_SECRET']
-        redirect_uri = os.environ['SPOTIFY_REDIRECT_URI']
+        scope = 'playlist-read-collaborative playlist-read-private playlist-modify-private'
+        token = util.prompt_for_user_token(username, scope, 
+                                           client_id=os.environ['SPOTIFY_CLIENT_ID'], 
+                                           client_secret=os.environ['SPOTIFY_CLIENT_SECRET'], 
+                                           redirect_uri=os.environ['SPOTIFY_REDIRECT_URI'])
+        assert token # Raises AssertionError if token not acquired successfully
+    # Environment variable(s) not set
     except KeyError:
         print('\nThe following environment variables must be set in order to run this script:\n' +\
               '\t- SPOTIFY_USERNAME\n\t- SPOTIFY_CLIENT_ID\n\t- SPOTIFY_CLIENT_SECRET\n\t- '+\
               'SPOTIFY_REDIRECT_URI\n'+\
               '\nPlease see README.md or matt-levin.com/PlaylistAnalyzer for more details.\n')    
         sys.exit(0)
-        
-    # Request access token from Spotify
-    scope = 'playlist-read-collaborative playlist-read-private playlist-modify-private'
-    token = util.prompt_for_user_token(username, scope, 
-                                       client_id=client_id, 
-                                       client_secret=client_secret, 
-                                       redirect_uri=redirect_uri)   
-    
-    if token is None: # Unable to authenticate with Spotify
-        print("Unable to get access token.")  
+    # Unable to authenticate with Spotify
+    except AssertionError:
+        print('Unable to get access token.')  
         sys.exit(0)
     
-    # If successfully created an authentication token with Spotify 
+    
+    # Successfully created an authentication token with Spotify 
     sp = spotipy.Spotify(auth=token)
     analyzer = Analyzer()
     
+    # Parse command line arguments if given, or run unittest.main()
     if(len(sys.argv) > 1): # Command line were arguments given
         feature = sys.argv[1] # Which feature is being used
         args = {} # The remaining arguments stored as a dict
@@ -980,7 +982,7 @@ if __name__ == '__main__':
         
         # Top Artists
         elif feature == '-a':
-            n = 15 # Default to showing top 15 artists
+            n = None # Default to None (showing all artists)
             if '-n' in args:
                 n = int(args['-n'])
             playlist_id = '38hwZEL0H1z6wUbq0UoHBS' # Default playlist to analyze
@@ -1063,13 +1065,12 @@ Please see README.md or matt-levin.com/PlaylistAnalyzer for more details.\n
 
         # Unrecognized feature selection
         else:
-            print("Invalid selection, please use '-h' or '--help' to show correct usage.")
-    
+            print("Invalid selection, please use '-h' or '--help' flag to show correct usage.")
 
     # Run unit testing if no arguments were given
     else:
-        print('Use -h or --help flag to see how to use each feature from Command Line.\n'+\
-             'Beginning unittesting since no arguments were given...')
+        print("Use '-h' or '--help' flag to see how to use each feature from Command Line.\n"+\
+             "Beginning unittesting since no arguments were given...")
         unittest.main()
 
     #print('\nProgram Complete')

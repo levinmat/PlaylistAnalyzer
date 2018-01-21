@@ -1,0 +1,97 @@
+
+Layers: (150, 200, 100)
+432 classified correctly out of 1200 for seed 0.
+425 classified correctly out of 1200 for seed 101.
+417 classified correctly out of 1200 for seed 2002.
+418 classified correctly out of 1200 for seed 30003.
+450 classified correctly out of 1200 for seed 400004.
+421 classified correctly out of 1200 for seed 5000005.
+434 classified correctly out of 1200 for seed 60000006.
+445 classified correctly out of 1200 for seed 700000007.
+422 classified correctly out of 1200 for seed 123456789.
+414 classified correctly out of 1200 for seed 999999999.
+
+Layers: (30, 200, 50)
+394 classified correctly out of 1200 for seed 0.
+451 classified correctly out of 1200 for seed 101.
+400 classified correctly out of 1200 for seed 2002.
+388 classified correctly out of 1200 for seed 30003.
+402 classified correctly out of 1200 for seed 400004.
+415 classified correctly out of 1200 for seed 5000005.
+435 classified correctly out of 1200 for seed 60000006.
+401 classified correctly out of 1200 for seed 700000007.
+406 classified correctly out of 1200 for seed 123456789.
+389 classified correctly out of 1200 for seed 999999999.
+
+Layers: (150, 250, 350, 200, 100)
+428 classified correctly out of 1200 for seed 0.
+433 classified correctly out of 1200 for seed 101.
+450 classified correctly out of 1200 for seed 2002.
+398 classified correctly out of 1200 for seed 30003.
+422 classified correctly out of 1200 for seed 400004.
+487 classified correctly out of 1200 for seed 5000005.
+419 classified correctly out of 1200 for seed 60000006.
+443 classified correctly out of 1200 for seed 700000007.
+446 classified correctly out of 1200 for seed 123456789.
+429 classified correctly out of 1200 for seed 999999999.
+
+Layers: (15,)
+370 classified correctly out of 1200 for seed 0.
+384 classified correctly out of 1200 for seed 101.
+384 classified correctly out of 1200 for seed 2002.
+378 classified correctly out of 1200 for seed 30003.
+365 classified correctly out of 1200 for seed 400004.
+372 classified correctly out of 1200 for seed 5000005.
+386 classified correctly out of 1200 for seed 60000006.
+384 classified correctly out of 1200 for seed 700000007.
+383 classified correctly out of 1200 for seed 123456789.
+376 classified correctly out of 1200 for seed 999999999.
+
+Layers: (10,)
+346 classified correctly out of 1200 for seed 0.
+376 classified correctly out of 1200 for seed 101.
+355 classified correctly out of 1200 for seed 2002.
+384 classified correctly out of 1200 for seed 30003.
+375 classified correctly out of 1200 for seed 400004.
+355 classified correctly out of 1200 for seed 5000005.
+361 classified correctly out of 1200 for seed 60000006.
+351 classified correctly out of 1200 for seed 700000007.
+368 classified correctly out of 1200 for seed 123456789.
+372 classified correctly out of 1200 for seed 999999999.
+
+Layers: (20,)
+378 classified correctly out of 1200 for seed 0.
+378 classified correctly out of 1200 for seed 101.
+388 classified correctly out of 1200 for seed 2002.
+381 classified correctly out of 1200 for seed 30003.
+404 classified correctly out of 1200 for seed 400004.
+377 classified correctly out of 1200 for seed 5000005.
+378 classified correctly out of 1200 for seed 60000006.
+366 classified correctly out of 1200 for seed 700000007.
+372 classified correctly out of 1200 for seed 123456789.
+380 classified correctly out of 1200 for seed 999999999.
+
+Layers: (150, 200, 100, 300, 250, 125)
+472 classified correctly out of 1200 for seed 0.
+433 classified correctly out of 1200 for seed 101.
+462 classified correctly out of 1200 for seed 2002.
+405 classified correctly out of 1200 for seed 30003.
+437 classified correctly out of 1200 for seed 400004.
+371 classified correctly out of 1200 for seed 5000005.
+377 classified correctly out of 1200 for seed 60000006.
+415 classified correctly out of 1200 for seed 700000007.
+429 classified correctly out of 1200 for seed 123456789.
+465 classified correctly out of 1200 for seed 999999999.
+
+
+Average score: 427.8 with SD: 11.56 and Min: 414 for layers = (150, 200, 100)
+Average score: 408.1 with SD: 19.33 and Min: 388 for layers = (30, 200, 50)
+Average score: 435.5 with SD: 22.35 and Min: 398 for layers = (150, 250, 350, 200, 100)
+Average score: 378.2 with SD: 6.85 and Min: 365 for layers = (15,)
+Average score: 364.3 with SD: 11.87 and Min: 346 for layers = (10,)
+Average score: 380.2 with SD: 9.60 and Min: 366 for layers = (20,)
+Average score: 426.6 with SD: 33.31 and Min: 371 for layers = (150, 200, 100, 300, 250, 125)
+
+The best trial scored 487 with layers (150, 250, 350, 200, 100) and seed 5000005
+Seeds Used = [0, 101, 2002, 30003, 400004, 5000005, 60000006, 700000007, 123456789, 999999999]
+Features Used = ['energy', 'liveness', 'speechiness', 'acousticness', 'instrumentalness', 'danceability', 'valence', 'loudness_0_1', 'tempo_0_1']

@@ -1,0 +1,86 @@
+Finding the top artists in A Top 100...
+
+Top artists in playlist:
+10 songs -  Kendrick Lamar                
+10 songs -  Frank Ocean                   
+9 songs  -  Kanye West                    
+8 songs  -  Action Bronson                
+5 songs  -  Joey Bada$$                   
+5 songs  -  BadBadNotGood                 
+5 songs  -  Anderson .Paak                
+4 songs  -  Tyler, The Creator            
+4 songs  -  The Weeknd                    
+4 songs  -  Statik Selektah               
+4 songs  -  SZA                           
+4 songs  -  Ghostface Killah              
+4 songs  -  Chance The Rapper             
+4 songs  -  Calvin Harris                 
+3 songs  -  Thundercat                    
+3 songs  -  Pusha T                       
+3 songs  -  Noname                        
+3 songs  -  Isaiah Rashad                 
+3 songs  -  Future                        
+3 songs  -  Daft Punk                     
+3 songs  -  Childish Gambino              
+3 songs  -  A Tribe Called Quest          
+2 songs  -  ScHoolboy Q                   
+2 songs  -  Kid Cudi                      
+2 songs  -  Jurassic 5                    
+2 songs  -  Jay Rock                      
+2 songs  -  JAY Z                         
+2 songs  -  Elzhi                         
+1 song   -  Zacari                        
+1 song   -  Young Thug                    
+1 song   -  Tree                          
+1 song   -  Travis Scott                  
+1 song   -  Todd Edwards                  
+1 song   -  The Mind                      
+1 song   -  The Free Nationals United Fell
+1 song   -  T-Pain                        
+1 song   -  Steve Lacy                    
+1 song   -  Six-Two                       
+1 song   -  Rihanna                       
+1 song   -  Rick Ross                     
+1 song   -  Rich Brian                    
+1 song   -  Ravyn Lenae                   
+1 song   -  Raury                         
+1 song   -  ProbCause                     
+1 song   -  Pharrell Williams             
+1 song   -  PARTYNEXTDOOR                 
+1 song   -  Nate Dogg                     
+1 song   -  My cousin Nicole              
+1 song   -  Mike Posner                   
+1 song   -  Migos                         
+1 song   -  Meyhem Lauren                 
+1 song   -  Mac Miller                    
+1 song   -  MC Eiht                       
+1 song   -  Lauriana Mae                  
+1 song   -  Labrinth                      
+1 song   -  Kurupt                        
+1 song   -  Khalid                        
+1 song   -  Joseph Chilliams              
+1 song   -  Jeremih                       
+1 song   -  Jay Electronica               
+1 song   -  J. Cole                       
+1 song   -  IshDARR                       
+1 song   -  Hugh Augustine                
+1 song   -  Hittman                       
+1 song   -  Francis and the Lights        
+1 song   -  Flying Lotus                  
+1 song   -  Eminem                        
+1 song   -  Earl Sweatshirt               
+1 song   -  Drake                         
+1 song   -  Dr. Dre                       
+1 song   -  Doom                          
+1 song   -  DRAM                          
+1 song   -  DMX                           
+1 song   -  Cam O'bi                      
+1 song   -  Black Star                    
+1 song   -  Big Sean                      
+1 song   -  Ariana Grande                 
+1 song   -  André 3000                   
+1 song   -  Andre Benjamin                
+1 song   -  Adam Levine                   
+1 song   -  2 Chainz                      
+
+81 different artists appeared in this playlist.
