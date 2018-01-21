@@ -143,6 +143,7 @@ GMM Clustering            |  Spectral Clustering
 
 ##### Clustering Using All Features versus Only a Subset
 The following are both created using 5 clusters and a Spectral clustering. The left column is clustered using only the valence and acousticness audio features, while the right column used all the available features. Clearly the plots are very different, as the left column shows how we typically visualize clustering, while the right column was clustered using more features than could fit on this 2D plot. 
+
 Using Only Energy and Valence  |  Using All Features
 :-----------------------------:|:-------------------------:
 ![Valence_vs_Acousticness_2D_spectral_5.png](sample_output/Valence_vs_Acousticness_2D_spectral_5.png)|![Valence_vs_Acousticness_spectral_5.png](sample_output/Valence_vs_Acousticness_spectral_5.png)
