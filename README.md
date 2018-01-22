@@ -152,7 +152,7 @@ Using Only Energy and Acousticness  |  Using All Features
 ## Summary
 This project contains various functions to draw insights and create customized content based on different users' Top 100 playlists. Along the way, I've discovered some cool songs and artists from friends' Top 100 lists. More importantly, I have been able to share not only insights, but customized playlists with my friends for either dancing, studying, or just mimicking the audio profile of their Top 100 list. I have received positive feedback from several of the users who sent me their playlists, and will definitely continue working on this project and implementing new features.
 
-Feel free to [contact me](mailto:mlevin6@u.rochester.edu) with any comments or suggestions about this project!
+Feel free to contact me ([mlevin6@u.rochester.edu](mailto:mlevin6@u.rochester.edu)) with any comments or suggestions about this project!
 
 
 &nbsp;
