@@ -3,7 +3,7 @@
 
 *Interested in learning more about your music taste? Need a playlist for a group study session that you'll all enjoy? Want a custom generated playlist based on the audio features of your Top 100 songs?* 
 
-This project gives solutions to these problems and more. Inspired by Spotify's 2017 Wrapped feature, I set out to determine what insights could be gleaned from a user’s Top 100 playlist and how to apply this data in a meaningful way. After gathering Top 100 playlists from 12 different Spotify users, I began working on various functions using the Spotify API to see what could be done with the data.
+This project gives solutions to these problems and more. Inspired by Spotify's 2017 Wrapped feature, I set out to determine what insights could be gleaned from a user’s Top 100 playlist and how to apply this data in a meaningful way. After gathering Top 100 playlists from 12 different Spotify users, I began working on various functions using the [Spotify Web API](https://beta.developer.spotify.com/documentation/web-api/) to see what could be done with the data.
 
 If you use Spotify as much as I do, your Top 100 playlist is an accurate representation of your musical taste. Is it possible for a computer to automatically identify your taste in music, generate playlists you'll enjoy, and compare your tastes with your friends? The answer to all these questions is yes.
 
@@ -86,7 +86,7 @@ The following subsections contain example results from the different features co
 
 #### Classification and Prediction
 
-The following two examples show how well the classifier is able to distinguish between musical tastes. It is clear from the original playlists that these two users have very different music tastes. The generated playlists reflect this distinction, and contain a mix of tracks from their original Top 100 list as well as new tracks that they would very likely enjoy (as confirmed with feedback from several users). *Note: Removal of duplicates causes some genereated playlists to have fewer than N (100 in these examples) tracks.*<br/>
+The following two examples show how well the classifier is able to distinguish between musical tastes. It is clear from the original playlists that these two users have very different music tastes. The generated playlists reflect this distinction, and contain a mix of tracks from their original Top 100 list as well as new tracks that they would very likely enjoy (as confirmed with feedback from several users). *Note: Removal of duplicates causes some generated playlists to have fewer than N (100 in these examples) tracks.*<br/>
 *Example 1:* [Original Playlist One](https://open.spotify.com/user/12583161/playlist/7r3W3DbQBEbtTg0b7q0MQw?si=BQuncXs1QqaB-G48ZMbW0Q) was used to create [Generated Playlist One](https://open.spotify.com/user/12583161/playlist/3UcemYA67P5oeg05m9iiDr?si=XJn-yXCbSwu0UsuCbuReaw).<br/>
 *Example 2:* [Original Playlist Two](https://open.spotify.com/user/12583161/playlist/6g263m0E8SI1HzIcMFeRVu?si=anuMZsUNQOCtPKM9pEMKfQ) was used to create [Generated Playlist Two](https://open.spotify.com/user/12583161/playlist/2UCjB6tudcrj4Kcvs9t2nl?si=FOTZLDWkShqTspes2c_v_g).
 
@@ -134,7 +134,7 @@ The following plot shows the number of tracks that are assigned to each cluster 
 *This particular graph uses Gaussian Mixture Model clustering on all the available audio features, using 6 cluster centers.*
 
 ##### Gaussian Mixture Model versus Spectral Clustering
-So far two different methods for clustering have been implemented: Gaussian Mixture Modeling and Spectral. Below is an example comparing the different clusters found when only the energy and valence audio features are used in clustering. Of course, the order/color of the clusters are arbitrary, however there are several notable differences between the two algorithms in the way the tracks are split up among the resulting clusters. In the future, I plan on adding k-means clustering, and possibly other algorithms as well.
+So far two different methods for clustering have been implemented: Gaussian Mixture Model and Spectral. Below is an example comparing the different clusters found when only the energy and valence audio features are used in clustering. Of course, the order/color of the clusters are arbitrary, however there are several notable differences between the two algorithms in the way the tracks are split up among the resulting clusters. In the future, I plan on adding k-means clustering, and possibly other algorithms as well.
 
 GMM Clustering            |  Spectral Clustering
 :-------------------------:|:-------------------------:
@@ -142,9 +142,9 @@ GMM Clustering            |  Spectral Clustering
 
 
 ##### Clustering Using All Features versus Only a Subset
-The following are both created using 5 clusters and a Spectral clustering. The left column is clustered using only the valence and acousticness audio features, while the right column used all the available features. Clearly the plots are very different, as the left column shows how we typically visualize clustering, while the right column was clustered using more features than could fit on this 2D plot. 
+The following are both created using spectral clustering with 5 clusters. The left column is clustered using only the valence and acousticness audio features, while the right column used all the available features. Clearly the plots are very different, as the left column shows how we typically visualize clustering, while the right column was clustered using more features than could fit on this 2D plot. 
 
-Using Only Energy and Valence  |  Using All Features
+Using Only Energy and Acousticness  |  Using All Features
 :-----------------------------:|:-------------------------:
 ![Valence_vs_Acousticness_2D_spectral_5.png](sample_output/Valence_vs_Acousticness_2D_spectral_5.png)|![Valence_vs_Acousticness_spectral_5.png](sample_output/Valence_vs_Acousticness_spectral_5.png)
 
