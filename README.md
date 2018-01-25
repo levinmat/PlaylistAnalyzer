@@ -5,7 +5,7 @@
 
 This project gives solutions to these problems and more. Inspired by Spotify's 2017 Wrapped feature, I set out to determine what insights could be gleaned from a user’s Top 100 playlist and how to apply this data in a meaningful way. After gathering Top 100 playlists from 12 different Spotify users, I began working on various functions using the [Spotify Web API](https://beta.developer.spotify.com/documentation/web-api/) to see what could be done with the data.
 
-If you use Spotify as much as I do, your Top 100 playlist is an accurate representation of your musical taste. Is it possible for a computer to automatically identify your taste in music, generate playlists you'll enjoy, and compare your tastes with your friends? The answer to all these questions is yes.
+If you use Spotify as much as I do, your Top 100 playlist is an accurate representation of your musical taste. Is it possible for a computer to automatically identify your taste in music, generate playlists of new music you'll enjoy, and compare your tastes with your friends? The answer to all these questions is yes.
 
 Though it started out as simply finding the most popular artists in a playlist, this project quickly grew into a machine learning focused program designed to: generate playlists catered to a user's musical tastes, cluster the data using different audio features, and create a playlist of the most danceable or study-able tracks from a set of input playlists. Although these are the major functions so far, there are a plethora of fun and useful potential features for end-users waiting to be made using this sort of data and analysis.
 
@@ -26,20 +26,20 @@ This project consists of several features listed below, with more details about 
 
 #### Playlist Classification and Prediction
 
-Trains a model to predict which playlist a track is from based on its audio features. The trained model can then be used to generate a playlist of tracks that would likely be from a given playlist, in other words, tracks that the user would enjoy since they are musically similar to the songs in their Top 100 list. Any combination of audio features can be used in the training and prediction.
+A model is trained to predict which playlist a track is from based on its audio features, as obtained from the Spotify API. The trained model can then be used to generate a playlist of tracks that would likely be from a given playlist, in other words, tracks that the user would enjoy since they are musically similar to the songs in their Top 100 list. Any combination of audio features can be used in the training and prediction.
 
-Either a Multilayer Perceptron (MLP) classifier *(sklearn.neural_network.MLPClassifier)* or a Gaussian Naive Bayes classifier *(sklearn.naive_bayes.GaussianNB)* can be used as the model; however, I have found that the MLP classifier performs better on this dataset.
+Either a Multilayer Perceptron (MLP) classifier *(sklearn.neural_network.MLPClassifier)* or a Gaussian Naive Bayes classifier *(sklearn.naive_bayes.GaussianNB)* can be used as the model for classification. However, I have found that the MLP classifier performs better on this dataset, so it is the model used in playlist generation.
 
 #### Dance Party and Study Buddies Playlist Generators
 Another neat feature is generating a custom playlist for either dancing or studying, selecting a few tracks from each input playlist. For example, if 4 friends are studying together and want to play music they will all enjoy and be able to study to, this tool would automatically generate a playlist to fit all their needs. 
 
-The dance party function uses a combination of the danceability and energy audio features to choose the tracks, while study buddies uses instrumentalness, acousticness, energy, and speechiness. These combinations of audio features intuitively make sense, at least in my opinion, for creating a playlist conducive to dancing or studying.
+The dance party function uses a combination of the *danceability* and *energy* audio features to choose the tracks, while study buddies uses *instrumentalness, acousticness, energy,* and *speechiness*. These combinations of audio features intuitively make sense, at least in my opinion, for creating a playlist conducive to dancing or studying.
 
 #### Top Artists in a Playlist
-This feature extracts the artists who show up most often in a given playlist, and displays their names and how many songs they are responsible for. It takes into account the fact that songs can have more than one artist, and also shows the total number of artists who are present in the playlist. Although technically less advanced than the previous two features, this feature was requested by some of the users who sent me their Top 100 lists, and I was also curious to find out about my own playlist.
+This feature extracts the artists who show up most often in a given playlist, and displays their names and how many of their are in the playlist. It takes into account the fact that songs can have more than one artist, and also shows the total number of artists who are present in the playlist. Although technically less advanced than the previous two features, this feature was requested by some of the users who sent me their Top 100 lists, and I was also curious to find out about my own playlist.
 
 #### Cluster Visualization
-Clustering can be performed on the data, using any combination of audio features. After the clusters are found, several plots are created and shown to the user. The first shows the cluster distribution for each playlist, to reaffirm the belief that different users' playlists have very different audio trends. After that initial plot is displayed, a scatter plot is shown for each pair of audio features. The features used in plotting can also be customized, and an x or y-axis feature can be specified so that only the plots with that feature are shown (i.e. if you only wanted to see plots with *valence* on the y-axis). Both Gaussian Mixture Model and Spectral clustering are supported.
+Clustering can be performed on the data, using any combination of audio features. After the clusters are found, several plots are created and shown to the user. The first shows the cluster distribution for each playlist, to reaffirm the belief that different users' playlists have very different audio trends. After that initial plot is displayed, a scatter plot is shown for each pair of audio features. The features used in plotting can also be customized, and an x or y-axis feature can be specified so that only the plots with that feature are shown (i.e. if you only wanted to see plots with *energy* on the y-axis). Both Gaussian Mixture Model and Spectral clustering are supported.
 
 
 
@@ -134,7 +134,7 @@ The following plot shows the number of tracks that are assigned to each cluster 
 *This particular graph uses Gaussian Mixture Model clustering on all the available audio features, using 6 cluster centers.*
 
 ##### Gaussian Mixture Model versus Spectral Clustering
-So far two different methods for clustering have been implemented: Gaussian Mixture Model and Spectral. Below is an example comparing the different clusters found when only the energy and valence audio features are used in clustering. Of course, the order/color of the clusters are arbitrary, however there are several notable differences between the two algorithms in the way the tracks are split up among the resulting clusters. In the future, I plan on adding k-means clustering, and possibly other algorithms as well.
+So far two different methods for clustering have been implemented: Gaussian Mixture Model and Spectral. Below is an example comparing the different clusters found when only the *energy* and *valence* audio features are used in clustering. Of course, the order/color of the clusters are arbitrary, however there are several notable differences between the two algorithms in the way the tracks are split up among the resulting clusters. In the future, I plan on adding k-means clustering, and possibly other algorithms as well.
 
 GMM Clustering            |  Spectral Clustering
 :-------------------------:|:-------------------------:
@@ -142,15 +142,15 @@ GMM Clustering            |  Spectral Clustering
 
 
 ##### Clustering Using All Features versus Only a Subset
-The following are both created using spectral clustering with 5 clusters. The left column is clustered using only the valence and acousticness audio features, while the right column used all the available features. Clearly the plots are very different, as the left column shows how we typically visualize clustering, while the right column was clustered using more features than could fit on this 2D plot. 
+The following are both created using spectral clustering with 5 clusters. The left column is clustered using only the *valence* and *acousticness* audio features, while the right column used all the available features. Clearly the plots are very different, as the left column shows how we typically visualize clustering, while the right column was clustered using more features than could fit on this 2D plot. 
 
-Using Only Energy and Acousticness  |  Using All Features
+Using Only Valence and Acousticness  |  Using All Features
 :-----------------------------:|:-------------------------:
 ![Valence_vs_Acousticness_2D_spectral_5.png](sample_output/Valence_vs_Acousticness_2D_spectral_5.png)|![Valence_vs_Acousticness_spectral_5.png](sample_output/Valence_vs_Acousticness_spectral_5.png)
 
 
 ## Summary
-This project contains various functions to draw insights and create customized content based on different users' Top 100 playlists. Along the way, I've discovered some cool songs and artists from friends' Top 100 lists. More importantly, I have been able to share not only insights, but customized playlists with my friends for either dancing, studying, or just mimicking the audio profile of their Top 100 list. I have received positive feedback from several of the users who sent me their playlists, and will definitely continue working on this project and implementing new features.
+This project contains various functions to draw insights and create customized content based on different users' Top 100 playlists. Along the way, I've discovered some cool songs and artists from friends' Top 100 lists. More importantly, I have been able to share not only insights, but customized playlists with my friends for either dancing, studying, or just mimicking the audio profile of their Top 100 list. I have received positive feedback from several of the users who sent me their playlists, and will definitely continue working on this project and implementing new features in the future.
 
 Feel free to contact me ([mlevin6@u.rochester.edu](mailto:mlevin6@u.rochester.edu)) with any comments or suggestions about this project!
 
