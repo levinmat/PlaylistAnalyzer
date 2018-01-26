@@ -1,5 +1,6 @@
 # Playlist Analyzer for Spotify
 #### *Created by [Matt Levin](https://www.matt-levin.com/)*
+
 *Is it possible for a computer to automatically identify your taste in music and generate playlists of new music that you would enjoy based on your Top 100 most played songs? Can multiple users’ Top 100 playlists be used to instantly create a collaborative playlist for a group study session, or to visualize the differences in their music tastes?*
 
 Inspired by Spotify's [2017 Wrapped](https://2017wrapped.com) feature, I set out to determine what insights could be gathered from a user’s Top 100 playlist and how to apply this data in a meaningful way. After collecting Top 100 playlists from 12 different Spotify users, I began working on various functions using the [Spotify Web API](https://beta.developer.spotify.com/documentation/web-api/) to see what could be done with the data.
@@ -9,7 +10,7 @@ Though it started out as simply finding the most popular artists in a playlist, 
 This project is built around the Spotify Python Wrapper, [Spotipy](https://github.com/plamere/spotipy), using various tools such as [scikit-learn](http://scikit-learn.org/stable/) and [pandas](https://pandas.pydata.org/). *Note: Although much of this project is designed with Top 100 playlists in mind, it is still generally applicable to any playlists used as input.*
 
 ## Features
-This project consists of several features listed below, with more details about each in the following subsections. Instructions on how to use each feature can be found in the Usage section, and examples of the results are in the Sample Output section.
+This project consists of several features listed below, with more details about each in the following subsections. 
 * **Classify which playlist a song is most likely to be in based on its audio features.**
 * **Predict which songs a user would enjoy, creating a Spotify playlist musically similar to their Top 100 playlist.**
 * **Generate a playlist of the most danceable songs from a group of source playlists.**
@@ -17,10 +18,10 @@ This project consists of several features listed below, with more details about 
 * **Find and display the artists with the most tracks in a playlist.**
 * **Cluster the tracks from multiple playlists based on any subset of audio features, and visualize the resulting clusters.**
 
-
+*Note: See the Usage and Sample Output sections for instructions on how to run each feature and example results.*
 
 #### Playlist Classification and Prediction
-For each input playlist, the track metadata and audio features (obtained from the Spotify API) are written into a CSV file. The data from all the input playlists is then used to train a model to classify which source playlist a given track is from based on the audio features of the track. Once trained, the model can then be used to generate a playlist of tracks that it predicts would most likely be from a given playlist. In other words, it picks tracks that the user would enjoy since they are musically similar to the songs in their Top 100 list, which were used in training the model. For each track, the trained model gives a probability that it is from a given playlist. So by choosing the tracks with the highest probability of being from the selected source playlist, it generates a playlist that mirrors the audio profile of the original playlist.
+For each input playlist, metadata and audio features (obtained from the Spotify API) of each track are written into a CSV file (spreadsheet). The data from all the input playlists is then used to train a model to classify which source playlist a given track is from based on the audio features of the track. Once trained, the model can then be used to generate a playlist of tracks that it predicts would most likely be from a given playlist. In other words, it picks tracks that the user would enjoy since they are musically similar to the songs in their Top 100 list, which were used in training the model. For each track, the trained model gives a probability that it is from a given playlist. So by choosing the tracks with the highest probability of being from the selected source playlist, it generates a playlist that mirrors the audio profile of the original playlist.
 
 Either a Multilayer Perceptron (MLP) classifier *(sklearn.neural_network.MLPClassifier)* or a Gaussian Naive Bayes classifier *(sklearn.naive_bayes.GaussianNB)* can be trained as the model for classification. However, I have found that the MLP classifier performs better on this dataset, so it is the model used in playlist generation. Any combination of audio features can be used in the training and prediction, however by default all available features are used.
 
@@ -36,8 +37,7 @@ This feature extracts the artists who show up most often in a given playlist, an
 
 
 #### Cluster Visualization
-Clustering can be performed on the data using any combination of audio features. After the clusters are found, several plots are created and shown to the user. To reaffirm the belief that different users' playlists have very different audio trends, the distribution of clusters for each playlist is shown as a bar chart. After that initial plot is displayed, a scatter plot is shown for each pair of audio features. See the Sample Output section below for examples of these plots. The features used in plotting can also be customized, and an x or y-axis feature can be specified so that only the plots with that feature are shown (i.e. if you only wanted to see plots with *energy* on the y-axis). Both Gaussian Mixture Model and Spectral clustering are supported.
-
+Clustering can be performed on the data using any combination of audio features. After the clusters are found, several plots are created and shown to the user. To reaffirm the belief that different users' playlists have very different audio trends, the cluster distributions for each playlist is shown as a bar chart. After that initial plot is displayed, a scatter plot is shown for each pair of audio features. See the Sample Output section below for examples of these plots. The features used in plotting can also be customized, and a feature can be specified for the x-axis or y-axis so that only the plots with that feature are shown (i.e. if you only wanted to see plots with *energy* on the y-axis). Both Gaussian Mixture Model and Spectral clustering are supported.
 
 
 
@@ -79,8 +79,7 @@ To use the script use `python playlist_analyzer.py` with any of the following se
 
 
 ## Sample Output
-The following subsections contain example results from the different features contained in this project. Some are links to open a playlist in Spotify, while others are images of plots, or simply text.
-*Note: Any linked Spotify playlists may contain explicit content, parental discretion is advised.*
+The following subsections contain example results from the different features contained in this project. Some are links to open a playlist in Spotify, while others are images of plots, or simply text. *Note: Any linked Spotify playlists may contain explicit content, parental discretion is advised.*
 
 #### Classification and Prediction
 The following two examples show how well the classifier is able to distinguish between musical tastes. It is clear from the original playlists that these two users have very different music tastes. The generated playlists reflect this distinction, and contain a mix of tracks from their original Top 100 list as well as new tracks that they would very likely enjoy (as confirmed with feedback from several users). *Note: Removal of duplicates causes some generated playlists to have fewer than N (100 in these examples) tracks.*<br/>

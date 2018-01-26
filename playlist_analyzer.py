@@ -1,24 +1,17 @@
 #!/usr/local/bin/python
 
 """
-TODO: 
-   sample_output - graphs, benchmarking classify
-   comments - for each function, top of file, inner code
-   README.md - Focus on MLP benchmarking, generating THEN dance/study lists THEN rand things: top artists, clustering, 
-                Hype up the NN finding songs that I actually liked that weren't from my own
 
-"""
-
-
-"""
-
+Playlist Analyzer for Spotify
 Matt Levin - 2018
 
 This program contains several functions that explore analyzing playlists, designed for users'
-Top 100 playlists, using the Spotify Python wrapper Spotipy (https://github.com/plamere/spotipy).
+Top 100 playlists, using the Spotify Python (2.7) wrapper Spotipy (https://github.com/plamere/spotipy).
 
-Please see README.md for instructions on using this script and more details on the features listed below.
-The -h or --h flag can be used as well to show proper usage for each feature.
+Please see README.md or matt-levin.com/PlaylistAnalyzer for instructions on using this script and
+more details on the features listed below.
+
+The -h or --help flag can be used to show proper usage for each feature.
 
 Features:
  - Train a classifier to predict which playlist a track belongs to based on its audio features using
@@ -42,7 +35,7 @@ Features:
 Code Outline:
  Analyzer class
    - Initializer
-   - Classification functions (MLP and Naive Bayes) and Playlist generator using MLP (my favorite function)
+   - Classification functions (MLP and Naive Bayes) and playlist generator using MLP
    - Dance Party and Study Buddies playlist generator functions
    - Clustering functions (GMM and Spectral) and cluster plotting function
    - Top Artists function
@@ -55,10 +48,11 @@ Code Outline:
    - Authenticates with Spotify (requires environment varibles to be set)
    - Parses command line arguments to call appropriate function, or calls unittest.main() if no args given
 
-
+------------------------------------------------------------------------------------------         
 Note: The following environment variables must be set in order to locally run the script:
-      SPOTIFY_USERNAME, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REDIRECT_URI
-           
+      SPOTIFY_USERNAME, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REDIRECT_URI   
+------------------------------------------------------------------------------------------           
+
 ~ I have no affiliation with Spotify ~
 
 """
@@ -799,8 +793,8 @@ TestAnalyzer class uses unittest to test the various features of Writer and Anal
 Note: All tests are skipped right now since they have been tested already. 
 
 """
-skip_tests = False
-skip_tests = True # Comment this line out to run all the tests (disable skips)
+skip_tests = False # Don't skip any tests
+skip_tests = True  # Comment out this line to run ALL the tests (disable skips)
 class TestAnalyzer(unittest.TestCase):
     
     @classmethod
@@ -816,7 +810,7 @@ class TestAnalyzer(unittest.TestCase):
         playlist = sp.user_playlist(username, playlist_id)
         analyzer.top_artists(playlist, n=10)
         
-        # Call with the string instead, and with no n given (so defaults to all artists)
+        # Call with the string instead, and with no n given (defaults to all artists)
         analyzer.top_artists(playlist_id)
     
     @unittest.skipIf(skip_tests, '')
@@ -845,7 +839,8 @@ class TestAnalyzer(unittest.TestCase):
     def test_invalid_playlist(sef):
         print('\n.......... testing invalid playlist ...............')
         try:
-            # Should use csv filename for this function (c_top_100) not ID
+            # Should use csv filename for this function not ID
+            #analyzer.predict_playlist(playlist='c_top_100') # Correct usage
             analyzer.predict_playlist(playlist='5kipTqpcNptT9sCcrV0RdW')
         except Exception as e:
             print(e)
@@ -878,7 +873,7 @@ class TestAnalyzer(unittest.TestCase):
         print('\n.......... testing cluster plotting .................')
         # First make sure some clusters have been generated
         analyzer.gmm_cluster(n_clusters=3, show_plot=False)
-        analyzer.plot_clusters(algorithm='GMM', x='energy', y='valence') # Plot specific x,y combo only
+        analyzer.plot_clusters(algorithm='GMM', x='energy', y='valence') # Plot this x,y combo only
         analyzer.plot_clusters(algorithm='GMM', y='valence') # Cycle through each x
         analyzer.plot_clusters(algorithm='GMM', x='energy')  # Cycle through each y
            
@@ -915,6 +910,7 @@ class TestAnalyzer(unittest.TestCase):
     @classmethod
     def tearDownClass(self):
         print('\n.... finished unit testing of playlist_analyzer.py ...')
+        print('\n (s = Test Skipped)')
         print('\n\nUse -h or --help flag from command line to see how to use '+\
               '\neach feature if you did not mean to perform unittesting.')
         
@@ -959,14 +955,18 @@ if __name__ == '__main__':
     sp = spotipy.Spotify(auth=token)
     analyzer = Analyzer()
     
-    # Parse command line arguments if given, or run unittest.main()
-    if(len(sys.argv) > 1): # Command line were arguments given
+    # Parse command line arguments if given, otherwise run unittest.main()
+    if len(sys.argv) == 1: # No arguments
+        print("Use '-h' or '--help' flag to see how to use each feature from Command Line.\n"+\
+             "Beginning unittesting since no arguments were given...")
+        unittest.main()
+    else: # Command line were arguments given
         feature = sys.argv[1] # Which feature is being used
         args = {} # The remaining arguments stored as a dict
         for i in range(2, len(sys.argv), 2): # Parse any optional arguments into args dict
             try:
                 args[sys.argv[i]] = sys.argv[i+1]
-            except IndexError:
+            except IndexError: 
                 print('Invalid arguments, use -h or --help flag to see proper usage')
                 sys.exit(0)
         
@@ -987,7 +987,7 @@ if __name__ == '__main__':
                 n = int(args['-n'])
             playlist_id = '38hwZEL0H1z6wUbq0UoHBS' # Default playlist to analyze
             if '-p' in args:
-                playlist_id = args['-p'].split(':')[-1] # Isolate ID if more was given
+                playlist_id = args['-p'].split(':')[-1] # Isolate ID if URI was given
             playlist = sp.user_playlist(username, playlist_id)
             analyzer.top_artists(playlist, n)
         
@@ -995,7 +995,7 @@ if __name__ == '__main__':
         elif feature == '-w':
             writer = Writer()
             if '-p' in args: # Of a single playlist if -p argument provided
-                playlist_id = args['-p'].split(':')[-1] # Isolate ID if more was given
+                playlist_id = args['-p'].split(':')[-1] # Isolate ID if URI was given
                 playlist = sp.user_playlist(username, playlist_id)
                 writer.write_csv(playlist)
             else: # Default to all user playlists (that have 'Top 100' in the name)
@@ -1062,15 +1062,7 @@ Please see README.md or matt-levin.com/PlaylistAnalyzer for more details.\n
 \tGenerates a study playlist from given Playlist CSV file names, taking n songs from each\n
 -c [-a Algorithm] [-n Number_Of_Clusters]
 \tPerforms clustering with given algorithm {'GMM' or 'spectral'} and number of clusters\n""")
-
+        
         # Unrecognized feature selection
         else:
             print("Invalid selection, please use '-h' or '--help' flag to show correct usage.")
-
-    # Run unit testing if no arguments were given
-    else:
-        print("Use '-h' or '--help' flag to see how to use each feature from Command Line.\n"+\
-             "Beginning unittesting since no arguments were given...")
-        unittest.main()
-
-    #print('\nProgram Complete')
