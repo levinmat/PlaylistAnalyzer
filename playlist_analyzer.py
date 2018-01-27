@@ -41,11 +41,11 @@ Code Outline:
    - Top Artists function
    - Helper functions
  Writer class
-   - Write a CSV for a playlist's metadata and audio features, or for each playlist conaining 'Top 100'
+   - Write a CSV for a playlist's metadata and audio features, or for each playlist containing 'Top 100'
  TestAnalyzer class
    - Unit testing for all the different features
  Main Method
-   - Authenticates with Spotify (requires environment varibles to be set)
+   - Authenticates with Spotify (requires environment variables to be set)
    - Parses command line arguments to call appropriate function, or calls unittest.main() if no args given
 
 ------------------------------------------------------------------------------------------         
@@ -61,8 +61,8 @@ import spotipy  # Spotify Python wrapper (https://github.com/plamere/spotipy)
 import spotipy.util as util
 
 import sys
-import os       # For environment variables (application credentials)
-import csv      # For writing CSV file for each playlist
+from os import environ as env # For environment variables (application credentials)
+from csv import writer as csv_writer # For writing CSV file for each playlist
 import glob
 from datetime import datetime
 import heapq    # Heap data structure
@@ -105,8 +105,8 @@ class Analyzer:
         if(files == 'all'): # Defaults to all csv files in the csv folder
             files = glob.glob('csv/*.csv')
         
-        # Read each selected csv file into it's own dataframe - Add a column 'source' with the filename
-        dfs = map(lambda f: pd.read_csv(f).assign(source=os.path.basename(f).split('.')[0]), files)
+        # Read each selected csv file into its own dataframe - Add a column 'source' with the filename
+        dfs = map(lambda f: pd.read_csv(f).assign(source=f.split('.')[0].split('/')[1]), files)
         # Combine the dataframes into self.data
         self.data = pd.concat(dfs, ignore_index=True)
         # List of source playlists for easy access since it is needed a lot
@@ -654,7 +654,7 @@ class Analyzer:
                 elif f == 'spectral':
                     self.spectral_cluster(show_plot=False, features=features)
                 else:
-                    raise KeyError('Error: Invalid feature ({})\nPossible ' + \
+                    raise NameError('Error: Invalid feature ({})\nPossible ' + \
                                      'features are: GMM, spectral, {}'.format(f, self.data.keys()))
     
     """
@@ -668,7 +668,7 @@ class Analyzer:
     """    
     def check_playlist(self, playlist):
         if playlist not in self.sources:
-            raise KeyError("Error: Playlist '{}' not found in list of playlists ({})\n"+\
+            raise NameError("Error: Playlist '{}' not found in list of playlists ({})\n"+\
                              "Try using '-w -p PLAYLIST_ID' to write a CSV first and make sure "+\
                              "not to include '.csv' in the name.".
                              format(playlist, self.sources))        
@@ -732,7 +732,7 @@ class Writer:
             offset += 50
 
         # Open the CSV (rewrites old data, creates if doesn't exist)
-        writer = csv.writer(open(outfile, 'w+')) 
+        writer = csv_writer(open(outfile, 'w+')) 
     
         header_row = ['Track Name', 'Primary Artist', 'Album'] # The header row of the CSV, first the Metadata
         for feature in all_tracks_features[0].keys(): # Add all the audio feature names to the header row
@@ -791,10 +791,10 @@ class Writer:
 TestAnalyzer class uses unittest to test the various features of Writer and Analyzer
 
 Note: All tests are skipped right now since they have been tested already. 
+      Also, most of the tests do not have explicit assertion statements, but just 
+      make sure the code is functioning as expected.
 
 """
-skip_tests = False # Don't skip any tests
-skip_tests = True  # Comment out this line to run ALL the tests (disable skips)
 class TestAnalyzer(unittest.TestCase):
     
     @classmethod
@@ -802,7 +802,7 @@ class TestAnalyzer(unittest.TestCase):
         # runs once before ALL tests
         print('\n.... starting unit testing of playlist_analyzer.py ...')
             
-    @unittest.skipIf(skip_tests, '')
+    @unittest.skip('')
     def test_top_artists(self):
         print('\n............ testing top artists ..................')
         # Call with the Playlist object and only display top 15 artists
@@ -813,50 +813,50 @@ class TestAnalyzer(unittest.TestCase):
         # Call with the string instead, and with no n given (defaults to all artists)
         analyzer.top_artists(playlist_id)
     
-    @unittest.skipIf(skip_tests, '')
+    @unittest.skip('')
     def test_predict_mlp(self):
         print('\n........... testing predict MLP ...................')
         analyzer.predict_playlist('rik_top_100')
         
-    @unittest.skipIf(skip_tests, '')
+    @unittest.skip('')
     def test_benchmark_mlp(self):
         print('\n........... testing benchmark MLP .................')
         analyzer.benchmark_mlp()
      
-    @unittest.skipIf(skip_tests, '')
+    @unittest.skip('')
     def test_dance_party(self):
         print('\n............ testing dance party ..................')
         source_playlists = ['p_top_100', 'a_top_100', 'ri_top_100']
         analyzer.dance_party(source_playlists, n=5)
     
-    @unittest.skipIf(skip_tests, '')
+    @unittest.skip('')
     def test_study_buddies(self):
         print('\n.......... testing study buddies ..................')
         source_playlists = ['rik_top_100', 'j_top_100', 'am_top_100', 'm_top_100', 'c_top_100']
         analyzer.study_buddies(source_playlists, n=6)
     
-    @unittest.skipIf(skip_tests, '')
+    @unittest.skip('')
     def test_invalid_playlist(sef):
         print('\n.......... testing invalid playlist ...............')
         try:
             # Should use csv filename for this function not ID
             #analyzer.predict_playlist(playlist='c_top_100') # Correct usage
             analyzer.predict_playlist(playlist='5kipTqpcNptT9sCcrV0RdW')
-        except Exception as e:
-            print(e)
-        print('\n(Expected an error)')
+            assert False, 'Invalid playlist format should have raised an error.'
+        except NameError:
+            print('Passed test.') # Expected this error
         
-    @unittest.skipIf(skip_tests, '')
+    @unittest.skip('')
     def test_invalid_feature(self):
         print('\n.......... testing invalid feature ................')
         try:
             # Synergy is not a valid audio feature
             analyzer.gmm_cluster(features=['energy','synergy'])
-        except Exception as e:
-            print(e)
-        print('\n(Expected an error)')
+            assert False, 'Invalid feature name should have raised an error.'
+        except NameError:
+            print('Passed test.') # Expected this error
    
-    @unittest.skipIf(skip_tests, '')
+    @unittest.skip('')
     def test_gmm_clustering(self):
         print('\n.......... testing gmm clustering ..................')
         
@@ -868,19 +868,18 @@ class TestAnalyzer(unittest.TestCase):
         print('Testing using all features...')
         analyzer.gmm_cluster(show_plot=True)
 
-    @unittest.skipIf(skip_tests, '')
+    @unittest.skip('')
     def test_plot_clusters(self):
         print('\n.......... testing cluster plotting .................')
         # First make sure some clusters have been generated
         analyzer.gmm_cluster(n_clusters=3, show_plot=False)
         analyzer.plot_clusters(algorithm='GMM', x='energy', y='valence') # Plot this x,y combo only
         analyzer.plot_clusters(algorithm='GMM', y='valence') # Cycle through each x
-        analyzer.plot_clusters(algorithm='GMM', x='energy')  # Cycle through each y
+        analyzer.plot_clusters(algorithm='GMM', x='energy')  # Cycle through each y     
            
-    @unittest.skipIf(skip_tests, '')
+    @unittest.skip('')
     def test_benchmark_gmm(self):
         print('\n...... testing benchmark GMM clustering ...........')
-        
         # Use all features - then show all plots
         print('Benchmarking GMM clustering using all features...')
         analyzer.benchmark_gmm_cluster(show_plot=False)
@@ -890,19 +889,32 @@ class TestAnalyzer(unittest.TestCase):
         print('Benchmarking GMM clustering using only 2 features...')  
         analyzer.benchmark_gmm_cluster(show_plot=True, features=['energy','valence'])
     
-    @unittest.skipIf(skip_tests, '')
+    @unittest.skip('')
     def test_spectral_clustering(self):
         print('\n........... testing spectral clustering ...........')
         analyzer.spectral_cluster()
         analyzer.spectral_cluster(features=['acousticness','valence'])
       
-    @unittest.skipIf(skip_tests, '')        
+    @unittest.skip('')
     def test_spectral_vs_gmm(self):
         print('\n........... testing spectral vs GMM ...........')
         print('Spectral...')
         analyzer.spectral_cluster(features=['energy','valence'], n_clusters=5)
         print('GMM...')
         analyzer.gmm_cluster(features=['energy','valence'], n_clusters=5)
+    
+    @unittest.skip('')
+    def test_gmm_two_features(self):
+        print('\n.......... testing gmm with 2 features .................')        
+        # Test clustering using each pair of features
+        features = ['energy', 'liveness', 'speechiness', 
+                    'acousticness', 'instrumentalness', 'danceability', 
+                    'valence', 'loudness_0_1', 'tempo_0_1']
+        for f1 in features:
+            for f2 in features:
+                if f1 != f2:
+                    # Find the best n_clusters for this pair and then show plots
+                    analyzer.benchmark_gmm_cluster(features=[f1,f2], show_plot=True)       
            
     def tearDown(self):
         print('\n')
@@ -931,42 +943,39 @@ if __name__ == '__main__':
     
     # Authenticate with Spotify - Access environment variables and request auth token
     try:
-        username = os.environ['SPOTIFY_USERNAME']
+        username = env['SPOTIFY_USERNAME']
         scope = 'playlist-read-collaborative playlist-read-private playlist-modify-private'
         token = util.prompt_for_user_token(username, scope, 
-                                           client_id=os.environ['SPOTIFY_CLIENT_ID'], 
-                                           client_secret=os.environ['SPOTIFY_CLIENT_SECRET'], 
-                                           redirect_uri=os.environ['SPOTIFY_REDIRECT_URI'])
-        assert token # Raises AssertionError if token not acquired successfully
-    # Environment variable(s) not set
+                                           client_id=env['SPOTIFY_CLIENT_ID'], 
+                                           client_secret=env['SPOTIFY_CLIENT_SECRET'], 
+                                           redirect_uri=env['SPOTIFY_REDIRECT_URI'])
+    # Environment variable(s) not set - print the names of the variables needed to run script
     except KeyError:
         print('\nThe following environment variables must be set in order to run this script:\n' +\
               '\t- SPOTIFY_USERNAME\n\t- SPOTIFY_CLIENT_ID\n\t- SPOTIFY_CLIENT_SECRET\n\t- '+\
               'SPOTIFY_REDIRECT_URI\n'+\
               '\nPlease see README.md or matt-levin.com/PlaylistAnalyzer for more details.\n')    
         sys.exit(0)
-    # Unable to authenticate with Spotify
-    except AssertionError:
-        print('Unable to get access token.')  
-        sys.exit(0)
-    
+
+    # Raises AssertionError if auth token not acquired successfully 
+    assert token, 'Unable to acquire access token from Spotify. Please try again.'    
     
     # Successfully created an authentication token with Spotify 
-    sp = spotipy.Spotify(auth=token)
+    sp = spotipy.Spotify(auth=token) # Object to interact with the API
     analyzer = Analyzer()
     
     # Parse command line arguments if given, otherwise run unittest.main()
-    if len(sys.argv) == 1: # No arguments
+    if len(sys.argv) == 1: # No arguments given...
         print("Use '-h' or '--help' flag to see how to use each feature from Command Line.\n"+\
              "Beginning unittesting since no arguments were given...")
-        unittest.main()
-    else: # Command line were arguments given
+        unittest.main() # Run unit testing
+    else: # Command line were arguments given...
         feature = sys.argv[1] # Which feature is being used
         args = {} # The remaining arguments stored as a dict
         for i in range(2, len(sys.argv), 2): # Parse any optional arguments into args dict
             try:
                 args[sys.argv[i]] = sys.argv[i+1]
-            except IndexError: 
+            except IndexError: # Invalid number of arguments (i.e. given an 'N' without '-n N')
                 print('Invalid arguments, use -h or --help flag to see proper usage')
                 sys.exit(0)
         
