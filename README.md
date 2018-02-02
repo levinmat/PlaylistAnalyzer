@@ -5,9 +5,10 @@
 
 Inspired by Spotify's [2017 Wrapped](https://2017wrapped.com) feature, I set out to determine what insights could be gathered from users' Top 100 playlists and how to apply this data in a meaningful way. After collecting Top 100 playlists from 12 different Spotify users, I began working on various functions using the [Spotify Web API](https://beta.developer.spotify.com/documentation/web-api/) to see what could be done with the data.
 
-Though it started out as simply finding the most popular artists in a playlist, this project quickly grew into a machine learning focused program with various functions including: creating a playlist of the most danceable or study-able tracks from a group of input playlists, generating a playlist to mimic the audio features of a user’s Top 100 tracks, and clustering the tracks of multiple users’ Top 100 playlists using different combinations of audio features. Although these are the major functions so far, there are a plethora of fun and useful potential features for end-users waiting to be made using this sort of data and analysis.
-
 This project is built around the Spotify Python Wrapper, [Spotipy](https://github.com/plamere/spotipy), using various tools such as [scikit-learn](http://scikit-learn.org/stable/) and [pandas](https://pandas.pydata.org/). *Note: Although much of this project is designed with Top 100 playlists in mind, it is still generally applicable to any playlists used as input.*
+
+## Summary
+This project contains various functions to draw insights and create customized playlists based on Spotify users’ Top 100 playlists. In addition to playlists tailored to a single user’s tastes, playlists can be generated using multiple users’ Top 100 lists and be catered for specific situations, such as dancing or studying. This framework is easily adaptable to be used for other scenarios, and leads to instantly generated collaborative playlists that a whole group can enjoy. I have been able to share these customized playlists with the users who sent me their Top 100 lists, and received a lot of positive feedback on both the individual and group playlists. Other features besides playlist generation are also included in the project, including finding the top artists in a playlist and clustering the data based on various audio features. Although these are the major functions so far, there are a plethora of fun and useful potential features for end-users waiting to be made using this sort of data and analysis.
 
 ## Features
 This project consists of several features listed below, with more details about each in the following subsections. 
@@ -18,7 +19,7 @@ This project consists of several features listed below, with more details about 
 * **Find and display the artists with the most tracks in a playlist.**
 * **Cluster the tracks from multiple playlists based on any subset of audio features, and visualize the resulting clusters.**
 
-*Note: See the Usage and Sample Output sections for instructions on how to run each feature and example results.*
+*Note: See the [Usage](#usage) and [Sample Output](#sample-output) sections for instructions on how to run each feature and example results.*
 
 #### Playlist Classification and Prediction
 For each input playlist, metadata and audio features (obtained from the Spotify API) of each track are written into a CSV file (spreadsheet). The data from all the input playlists is then used to train a model to classify which source playlist a given track is from based on the audio features of the track. Once trained, the model can then be used to generate a playlist of tracks that it predicts would most likely be from a given playlist. In other words, it picks tracks that the user would enjoy since they are musically similar to the songs in their Top 100 list, which were used in training the model. For each track, the trained model gives a probability that it is from a given playlist. So by choosing the tracks with the highest probability of being from the selected source playlist, it generates a playlist that mirrors the audio profile of the original playlist.
@@ -37,7 +38,7 @@ This feature extracts the artists who show up most often in a given playlist, an
 
 
 #### Cluster Visualization
-Clustering can be performed on the data using any combination of audio features. After the clusters are found, several plots are created and shown to the user. To reaffirm the belief that different users' playlists have very different audio trends, the cluster distributions for each playlist is shown as a bar chart. After that initial plot is displayed, a scatter plot is shown for each pair of audio features. See the Sample Output section below for examples of these plots. The features used in plotting can also be customized, and a feature can be specified for the x-axis or y-axis so that only the plots with that feature are shown (i.e. if you only wanted to see plots with *energy* on the y-axis). Both Gaussian Mixture Model and Spectral clustering are supported.
+Clustering can be performed on the data using any combination of audio features. After the clusters are found, several plots are created and shown to the user. To reaffirm the belief that different users' playlists have very different audio trends, the cluster distributions for each playlist is shown as a bar chart. After that initial plot is displayed, a scatter plot is shown for each pair of audio features. See the [Sample Output](#sample-output) section below for examples of these plots. The features used in plotting can also be customized, and a feature can be specified for the x-axis or y-axis so that only the plots with that feature are shown (i.e. if you only wanted to see plots with *energy* on the y-axis). Both Gaussian Mixture Model and Spectral clustering are supported.
 
 
 
@@ -144,8 +145,8 @@ Using Only Valence and Acousticness  |  Using All Features
 
 
 
-## Summary
-This project contains various functions to draw insights and create customized playlists based on Spotify users’ Top 100 playlists. In addition to playlists tailored to a single user’s tastes, playlists can be generated using multiple users’ Top 100 lists and be catered for specific situations, such as dancing or studying. This framework is easily adaptable to be used for other scenarios, and leads to instantly generated collaborative playlists that a whole group can enjoy. I have been able to share these customized playlists with the users who sent me their Top 100 lists, and received a lot of positive feedback on both the individual and group playlists. 
+## Conclusion
+This project contains several features to find insights and generate playlists based on users' Top 100 tracks. Clustering is performed to identify musical trends, top artists are extracted from a playlist, and machine learning is used to generate new playlists based on a user's Top 100 tracks. Not only can a generated playlist be tailored to a single user, but instead to a group of users in order to create a playlist they would all enjoy. Although currently designed to create playlists for group study sessions or dancing, this framework is easily adaptable to suit other scenarios. This allows a group of friends to instantly generate a collaborative playlist for a given situation, catered to all of their musical tastes. The potential features utilizing this sort of analysis and group-oriented design are endless, and I look forward to continuing to explore the data and the Spotify API as a whole.
 
 Feel free to contact me ([mlevin6@u.rochester.edu](mailto:mlevin6@u.rochester.edu)) with any comments or suggestions about this project!
 
